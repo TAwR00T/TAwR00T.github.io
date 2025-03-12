@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
-    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
-    <!-- اضافه کردن فونت‌های Google -->
+    <title>{% if page.title %}{{ page.title }} - {% endif %}Quantum Nexus</title>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Share+Tech+Mono&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
@@ -22,7 +20,7 @@
                 </div>
                 <div class="stat-box">
                     <div class="stat-title">Current User</div>
-                    <div class="stat-value">tawanamohammadi</div>
+                    <div class="stat-value">{{ site.author | default: "tawanamohammadi" }}</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-title">System Status</div>
@@ -32,24 +30,28 @@
 
             <!-- Central Title -->
             <div class="title-section">
-                <h1 class="main-title">{{ site.title }}</h1>
-                <p class="subtitle">{{ site.description }}</p>
+                <h1 class="main-title">{{ site.title | default: "Quantum Nexus" }}</h1>
+                <p class="subtitle">{{ site.description | default: "Exploring the Convergence of Technology, AI, and Human Consciousness in the Digital Age" }}</p>
                 <div class="featured-tags">
+                    {% for tag in site.featured_tags limit:3 %}
+                    <span class="tag">#{{ tag }}</span>
+                    {% else %}
                     <span class="tag">#QuantumComputing</span>
                     <span class="tag">#ArtificialIntelligence</span>
                     <span class="tag">#FutureWeb</span>
+                    {% endfor %}
                 </div>
                 <div class="blog-stats">
                     <div class="stat-item">
-                        <div class="stat-number">2.7K</div>
+                        <div class="stat-number">{{ site.posts.size | default: "2.7K" }}</div>
                         <div class="stat-label">Articles</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">15.4K</div>
+                        <div class="stat-number">{{ site.members | default: "15.4K" }}</div>
                         <div class="stat-label">Members</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">89%</div>
+                        <div class="stat-number">{{ site.satisfaction | default: "89%" }}</div>
                         <div class="stat-label">Satisfaction</div>
                     </div>
                 </div>
@@ -91,19 +93,74 @@
         <div class="header-decoration" style="bottom: 0"></div>
     </header>
 
-    {{ content }}
+    <!-- Profile Section -->
+    <div class="profile-section">
+        <div class="profile-circle">
+            <div class="hexagon-overlay"></div>
+            <div class="binary-bg"></div>
+            <div class="neon-lines"></div>
+            <div class="profile-icon">{{ site.profile_icon | default: "T4" }}</div>
+        </div>
+
+        <div class="username-container">
+            <h2 class="glitch-text">{{ site.username | default: "T4wR00T" }}</h2>
+            <div class="cyberpunk-subtitle">
+                // {{ site.user_title | default: "QUANTUM MASTERMIND | NEURAL ARCHITECT | SYSTEM INFILTRATOR" }}
+            </div>
+        </div>
+
+        <div class="bio-container">
+            <div class="terminal-text">
+                {{ site.bio | default: ">>> INITIALIZING PROFILE
+                >>> ACCESSING NEURAL MATRIX...
+                >>> QUANTUM STATE: ACTIVE
+                >>> CORE FUNCTION: Merging human consciousness with artificial intelligence
+                >>> PRIMARY DIRECTIVE: Breaking barriers between neural networks and secure systems
+                >>> STATUS: Deep in the quantum realm, engineering the future of AI security" }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        {{ content }}
+    </main>
 
     <!-- Footer Section -->
     <footer class="quantum-footer">
         <div class="footer-content">
-            <div class="footer-logo">QUANTUM NEXUS</div>
+            <div class="footer-logo">{{ site.title | default: "Quantum Nexus" }}</div>
             <div class="footer-links">
-                <a href="#" class="footer-link">HOME</a>
-                <a href="#" class="footer-link">ARTICLES</a>
-                <a href="#" class="footer-link">PROFILE</a>
-                <a href="#" class="footer-link">CONTACT</a>
+                {% for item in site.data.navigation %}
+                <a href="{{ item.url | relative_url }}" class="footer-link">{{ item.title }}</a>
+                {% else %}
+                <a href="#" class="footer-link">Home</a>
+                <a href="#" class="footer-link">Articles</a>
+                <a href="#" class="footer-link">Research</a>
+                <a href="#" class="footer-link">Contact</a>
+                {% endfor %}
             </div>
-            <div class="copyright">© 2025 QUANTUM NEXUS | ALL RIGHTS RESERVED</div>
+            <div class="copyright">
+                &copy; {{ site.time | date: '%Y' }} {{ site.title | default: "Quantum Nexus" }}. All rights reserved.
+            </div>
+        </div>
+        <div class="footer-status">
+            <div class="status-left">
+                <div class="status-indicator">
+                    <span class="indicator-dot"></span>
+                    <span class="status-text">SYSTEM ONLINE</span>
+                </div>
+                <div class="status-indicator">
+                    <span class="indicator-dot"></span>
+                    <span class="status-text">QUANTUM SECURE</span>
+                </div>
+            </div>
+            <div class="status-right">
+                <div class="status-indicator">
+                    <span class="indicator-dot warning"></span>
+                    <span class="status-text">NEURAL SYNC: ACTIVE</span>
+                </div>
+            </div>
         </div>
     </footer>
 
