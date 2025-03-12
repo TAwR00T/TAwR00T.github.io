@@ -1,0 +1,27 @@
+# تنظیمات اصلی سایت
+title: TawR00T
+description: "HUMAN-AI SYMBIOSIS"
+baseurl: ""
+url: "https://TAwR00T.github.io"
+
+# تنظیمات Jekyll
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# تنظیمات نویسنده
+author:
+  name: TawR00T
+  email: root@tawanamohammadi.com
+
+# تنظیمات شبکه‌های اجتماعی
+social:
+  twitter: tawanamohammadi
+  telegram: tawanamohammadi
+  instagram: tawanamohammadi
+  email: root@tawanamohammadi.com
+
+# تنظیمات سایت
+copyright: "2025"
