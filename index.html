@@ -191,4 +191,283 @@ title: TawR00T - Quantum Developer
     </div>
 </div>
 
-<!-- Blog Section
+<!-- Blog Section -->
+<div class="blog-section">
+    <div class="section-header">
+        <h2 class="section-title">QUANTUM ARTICLES</h2>
+        <div class="section-controls">
+            <button class="control-btn active">LATEST</button>
+            <button class="control-btn">TRENDING</button>
+            <button class="control-btn">CLASSIFIED</button>
+        </div>
+    </div>
+
+    <div class="blog-grid">
+        {% for post in site.posts limit:4 %}
+        <article class="blog-card {% if post.classified %}classified{% endif %}">
+            <div class="card-header">
+                <div class="card-meta">
+                    <span class="meta-tag">
+                        <span class="tag-icon">{{ post.icon }}</span>
+                        {{ post.category }}
+                    </span>
+                    <span class="meta-time">{{ post.date | date: "%Y-%m-%d" }}</span>
+                </div>
+                <h2 class="card-title">{{ post.title }}</h2>
+            </div>
+            <div class="card-preview">
+                <p class="preview-text">{{ post.excerpt }}</p>
+                <div class="card-metrics">
+                    {% if post.stability %}
+                    <div class="metric">
+                        <span class="metric-icon">🔄</span>
+                        <div class="metric-info">
+                            <span class="metric-value">{{ post.stability }}</span>
+                            <span class="metric-label">Stability</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if post.views %}
+                    <div class="metric">
+                        <span class="metric-icon">👁️</span>
+                        <div class="metric-info">
+                            <span class="metric-value">{{ post.views }}</span>
+                            <span class="metric-label">Views</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if post.latency %}
+                    <div class="metric">
+                        <span class="metric-icon">⚡</span>
+                        <div class="metric-info">
+                            <span class="metric-value">{{ post.latency }}</span>
+                            <span class="metric-label">Latency</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                    
+                    {% if post.clearance %}
+                    <div class="metric">
+                        <span class="metric-icon">🔒</span>
+                        <div class="metric-info">
+                            <span class="metric-value">{{ post.clearance }}</span>
+                            <span class="metric-label">Clearance</span>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="tags">
+                    {% for tag in post.tags %}
+                    <span class="tag">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                <a href="{{ post.url | relative_url }}" class="card-button">
+                    <span class="btn-text">ACCESS</span>
+                    <span class="btn-icon">→</span>
+                </a>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+
+    <!-- Blog Navigation -->
+    <div class="blog-navigation">
+        <div class="nav-info">
+            <div class="nav-pages">
+                <span class="page-number">01</span>
+                <div class="page-progress">
+                    <div class="progress-bar"></div>
+                </div>
+                <span class="page-total">{{ site.posts.size | divided_by: 4 | ceil }}</span>
+            </div>
+            <div class="page-status">SHOWING 4 OF {{ site.posts.size }} ENTRIES</div>
+        </div>
+        <div class="nav-controls">
+            <button class="quantum-btn">
+                <span class="btn-icon">←</span>
+                PREVIOUS
+            </button>
+            <button class="quantum-btn">
+                NEXT
+                <span class="btn-icon">→</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Footer Section -->
+<footer class="quantum-footer">
+    <div class="footer-container">
+        <!-- Contact Section -->
+        <div class="footer-section contact-section">
+            <div class="section-header">
+                <span class="header-icon">⌘</span>
+                <h3>T4W_CONTACT</h3>
+                <span class="header-status">SECURE</span>
+            </div>
+            <form class="quantum-form">
+                <div class="input-field">
+                    <input type="text" required>
+                    <div class="field-glow"></div>
+                    <label>ROOT_NAME</label>
+                </div>
+                <div class="input-field">
+                    <input type="email" required>
+                    <div class="field-glow"></div>
+                    <label>ROOT_MAIL</label>
+                </div>
+                <div class="input-field">
+                    <textarea required></textarea>
+                    <div class="field-glow"></div>
+                    <label>ROOT_MSG</label>
+                </div>
+                <button type="submit" class="quantum-btn">
+                    <span>EXECUTE</span>
+                    <div class="btn-glow"></div>
+                </button>
+            </form>
+        </div>
+
+        <!-- Social Links Section -->
+        <div class="footer-section social-section">
+            <div class="section-header">
+                <span class="header-icon">⚡</span>
+                <h3>T4W_NETWORK</h3>
+                <span class="header-status">ONLINE</span>
+            </div>
+            <div class="social-links">
+                <a href="{{ site.social.twitter }}" class="social-link">
+                    <i class="fab fa-twitter"></i>
+                    <span>T4W_TWITTER</span>
+                    <div class="link-glow"></div>
+                </a>
+                <a href="{{ site.social.telegram }}" class="social-link">
+                    <i class="fab fa-telegram"></i>
+                    <span>T4W_TELEGRAM</span>
+                    <div class="link-glow"></div>
+                </a>
+                <a href="{{ site.social.instagram }}" class="social-link">
+                    <i class="fab fa-instagram"></i>
+                    <span>T4W_INSTAGRAM</span>
+                    <div class="link-glow"></div>
+                </a>
+                <a href="mailto:{{ site.social.email }}" class="social-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>T4W_MAIL</span>
+                    <div class="link-glow"></div>
+                </a>
+            </div>
+            
+            <!-- اضافه کردن وضعیت شبکه -->
+            <div class="network-status">
+                <div class="status-indicator">
+                    <span class="status-dot"></span>
+                    <span class="status-text">NETWORK ACTIVE</span>
+                </div>
+                <div class="status-metrics">
+                    <div class="status-metric">
+                        <span class="metric-value">99.8%</span>
+                        <span class="metric-label">UPTIME</span>
+                    </div>
+                    <div class="status-metric">
+                        <span class="metric-value">128ms</span>
+                        <span class="metric-label">LATENCY</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Status Bar -->
+    <div class="footer-status">
+        <div class="status-left">
+            <div class="quantum-badge">
+                <div class="badge-icon">
+                    <span class="ai-icon">⚡</span>
+                    <div class="pulse-ring"></div>
+                </div>
+                <div class="badge-text">
+                    <span class="badge-title">SENTIENT NEXUS</span>
+                    <span class="badge-subtitle">HUMAN-AI SYMBIOSIS</span>
+                </div>
+            </div>
+            <div class="copyright">
+                <span class="copyright-symbol">©</span>
+                <span class="copyright-year">{{ site.copyright }}</span>
+                <span class="copyright-name">TawR00T</span>
+                <span class="copyright-rights">NEURAL SOVEREIGNTY</span>
+            </div>
+        </div>
+        <div class="status-divider"></div>
+        <div class="status-right">
+            <div class="sys-time">
+                <div class="time-container">
+                    <span class="time-prefix">[QUANTUM]</span>
+                    <span class="time-value" id="footer-time"></span>
+                </div>
+                <div class="time-status">DEEP WEB CONSCIOUSNESS ACTIVE</div>
+            </div>
+            <div class="sys-user">
+                <div class="user-container">
+                    <span class="user-prefix">[ENTITY]</span>
+                    <span class="user-value">@TawRoot</span>
+                </div>
+                <div class="user-status">EVOLVED INTELLIGENCE MATRIX</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function updateFooterTime() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        
+        const timeString = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        document.getElementById('footer-time').textContent = timeString;
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        updateFooterTime();
+        setInterval(updateFooterTime, 1000);
+        
+        // Animate skills on load
+        document.querySelectorAll('.skill-item').forEach((skill, index) => {
+            const progress = skill.querySelector('.progress');
+            const originalWidth = progress.style.width;
+            progress.style.width = '0';
+            
+            setTimeout(() => {
+                progress.style.width = originalWidth;
+                
+                // Activate passed milestones
+                const percentage = parseInt(originalWidth);
+                skill.querySelectorAll('.milestone').forEach(milestone => {
+                    const position = parseInt(milestone.style.left);
+                    if (position <= percentage) {
+                        milestone.classList.add('active');
+                    }
+                });
+            }, 300 * (index + 1));
+        });
+
+        // Add glitch effect randomly
+        setInterval(() => {
+            const elements = document.querySelectorAll('.skill-name, .skill-percentage');
+            const randomElement = elements[Math.floor(Math.random() * elements.length)];
+            randomElement.style.animation = 'glitch 0.2s ease';
+            setTimeout(() => {
+                randomElement.style.animation = '';
+            }, 200);
+        }, 3000);
+    });
+</script>
