@@ -1,8 +1,8 @@
-title: TawR00T
-description: Quantum AI Developer
+title: Quantum Nexus
+description: Exploring the Convergence of Technology, AI, and Human Consciousness in the Digital Age
+author: T4wR00T
+url: https://TAwR00T.github.io
 baseurl: ""
-url: "https://tawr00t.github.io"
-github_username: TAwR00T
 
 # تنظیمات Jekyll
 markdown: kramdown
@@ -11,10 +11,25 @@ plugins:
   - jekyll-feed
   - jekyll-seo-tag
 
-# تنظیمات نویسنده
-author:
-  name: TawR00T
-  email: root@tawanamohammadi.com
+# تنظیمات نمایش پست‌ها
+paginate: 10
+paginate_path: "/page:num/"
 
-# تنظیمات نمایش
-show_excerpts: true
+# تنظیمات زبان و منطقه
+timezone: Asia/Tehran
+lang: en
+
+# تنظیمات سفارشی
+social:
+  github: TAwR00T
+  twitter: TAwR00T
+  linkedin: TAwR00T
+
+# تنظیمات مربوط به پست‌ها
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "T4wR00T"
