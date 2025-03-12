@@ -1,0 +1,20 @@
+title: TawR00T
+description: Quantum AI Developer
+baseurl: ""
+url: "https://tawr00t.github.io"
+github_username: TAwR00T
+
+# تنظیمات Jekyll
+markdown: kramdown
+permalink: /:title/
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# تنظیمات نویسنده
+author:
+  name: TawR00T
+  email: root@tawanamohammadi.com
+
+# تنظیمات نمایش
+show_excerpts: true
