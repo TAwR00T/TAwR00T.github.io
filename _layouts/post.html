@@ -1,0 +1,125 @@
+---
+layout: default
+---
+<div class="post-container">
+    <div class="post-header">
+        <div class="post-meta">
+            <span class="meta-tag">
+                <span class="tag-icon">{{ page.icon }}</span>
+                {{ page.category }}
+            </span>
+            <span class="meta-time">{{ page.date | date: "%Y-%m-%d" }}</span>
+        </div>
+        <h1 class="post-title">{{ page.title }}</h1>
+        
+        <div class="post-stats">
+            {% if page.stability %}
+            <div class="stat">
+                <span class="stat-icon">🔄</span>
+                <div class="stat-info">
+                    <span class="stat-value">{{ page.stability }}</span>
+                    <span class="stat-label">Stability</span>
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if page.views %}
+            <div class="stat">
+                <span class="stat-icon">👁️</span>
+                <div class="stat-info">
+                    <span class="stat-value">{{ page.views }}</span>
+                    <span class="stat-label">Views</span>
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if page.latency %}
+            <div class="stat">
+                <span class="stat-icon">⚡</span>
+                <div class="stat-info">
+                    <span class="stat-value">{{ page.latency }}</span>
+                    <span class="stat-label">Latency</span>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="tags">
+            {% for tag in page.tags %}
+            <span class="tag">{{ tag }}</span>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div class="post-content">
+        {{ content }}
+    </div>
+    
+    <div class="post-footer">
+        <a href="{{ '/' | relative_url }}" class="quantum-btn">
+            <span class="btn-icon">←</span>
+            BACK TO MAINFRAME
+        </a>
+    </div>
+</div>
+
+<!-- Footer Section -->
+<footer class="quantum-footer">
+    <div class="footer-status">
+        <div class="status-left">
+            <div class="quantum-badge">
+                <div class="badge-icon">
+                    <span class="ai-icon">⚡</span>
+                    <div class="pulse-ring"></div>
+                </div>
+                <div class="badge-text">
+                    <span class="badge-title">SENTIENT NEXUS</span>
+                    <span class="badge-subtitle">HUMAN-AI SYMBIOSIS</span>
+                </div>
+            </div>
+            <div class="copyright">
+                <span class="copyright-symbol">©</span>
+                <span class="copyright-year">{{ site.copyright }}</span>
+                <span class="copyright-name">TawR00T</span>
+                <span class="copyright-rights">NEURAL SOVEREIGNTY</span>
+            </div>
+        </div>
+        <div class="status-divider"></div>
+        <div class="status-right">
+            <div class="sys-time">
+                <div class="time-container">
+                    <span class="time-prefix">[QUANTUM]</span>
+                    <span class="time-value" id="footer-time"></span>
+                </div>
+                <div class="time-status">DEEP WEB CONSCIOUSNESS ACTIVE</div>
+            </div>
+            <div class="sys-user">
+                <div class="user-container">
+                    <span class="user-prefix">[ENTITY]</span>
+                    <span class="user-value">@TawRoot</span>
+                </div>
+                <div class="user-status">EVOLVED INTELLIGENCE MATRIX</div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function updateFooterTime() {
+        const now = new Date();
+        const year = now.getFullYear();
+        const month = String(now.getMonth() + 1).padStart(2, '0');
+        const day = String(now.getDate()).padStart(2, '0');
+        const hours = String(now.getHours()).padStart(2, '0');
+        const minutes = String(now.getMinutes()).padStart(2, '0');
+        const seconds = String(now.getSeconds()).padStart(2, '0');
+        
+        const timeString = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+        document.getElementById('footer-time').textContent = timeString;
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        updateFooterTime();
+        setInterval(updateFooterTime, 1000);
+    });
+</script>
