@@ -3,144 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% if page.title %}{{ page.title }} | {{ site.title }}{% else %}{{ site.title }}{% endif %}</title>
-    <meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.description }}{% endif %}">
-    
-    <!-- فونت‌ها -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    
-    <!-- استایل‌ها -->
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <!-- اضافه کردن فونت‌های Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Share+Tech+Mono&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 <body>
-    {{ content }}
-
-    <!-- فوتر -->
-    <footer class="quantum-footer">
-        <div class="footer-container">
-            <!-- بخش تماس -->
-            <div class="footer-section contact-section">
-                <div class="section-header">
-                    <span class="header-icon">⌘</span>
-                    <h3>T4W_CONTACT</h3>
-                    <span class="header-status">SECURE</span>
+    <!-- Header Section -->
+    <header class="cyber-header">
+        <div class="scan-line"></div>
+        <div class="header-content">
+            <!-- System Stats -->
+            <div class="system-stats">
+                <div class="stat-box">
+                    <div class="stat-title">System Time</div>
+                    <div class="stat-value" id="current-time"></div>
                 </div>
-                <form class="quantum-form">
-                    <div class="input-field">
-                        <input type="text" required>
-                        <div class="field-glow"></div>
-                        <label>ROOT_NAME</label>
-                    </div>
-                    <div class="input-field">
-                        <input type="email" required>
-                        <div class="field-glow"></div>
-                        <label>ROOT_MAIL</label>
-                    </div>
-                    <div class="input-field">
-                        <textarea required></textarea>
-                        <div class="field-glow"></div>
-                        <label>ROOT_MSG</label>
-                    </div>
-                    <button type="submit" class="quantum-btn">
-                        <span>EXECUTE</span>
-                        <div class="btn-glow"></div>
-                    </button>
-                </form>
+                <div class="stat-box">
+                    <div class="stat-title">Current User</div>
+                    <div class="stat-value">tawanamohammadi</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-title">System Status</div>
+                    <div class="stat-value">QUANTUM READY</div>
+                </div>
             </div>
 
-            <!-- بخش لینک‌های اجتماعی -->
-            <div class="footer-section social-section">
-                <div class="section-header">
-                    <span class="header-icon">⚡</span>
-                    <h3>T4W_NETWORK</h3>
-                    <span class="header-status">ONLINE</span>
+            <!-- Central Title -->
+            <div class="title-section">
+                <h1 class="main-title">{{ site.title }}</h1>
+                <p class="subtitle">{{ site.description }}</p>
+                <div class="featured-tags">
+                    <span class="tag">#QuantumComputing</span>
+                    <span class="tag">#ArtificialIntelligence</span>
+                    <span class="tag">#FutureWeb</span>
                 </div>
-                <div class="social-links">
-                    <a href="https://twitter.com/tawanamohammadi" class="social-link">
-                        <i class="fab fa-twitter"></i>
-                        <span>T4W_TWITTER</span>
-                        <div class="link-glow"></div>
-                    </a>
-                    <a href="https://t.me/tawanamohammadi" class="social-link">
-                        <i class="fab fa-telegram"></i>
-                        <span>T4W_TELEGRAM</span>
-                        <div class="link-glow"></div>
-                    </a>
-                    <a href="https://instagram.com/tawanamohammadi" class="social-link">
-                        <i class="fab fa-instagram"></i>
-                        <span>T4W_INSTAGRAM</span>
-                        <div class="link-glow"></div>
-                    </a>
-                    <a href="mailto:root@tawanamohammadi.com" class="social-link">
-                        <i class="fas fa-envelope"></i>
-                        <span>T4W_MAIL</span>
-                        <div class="link-glow"></div>
-                    </a>
-                </div>
-                
-                <!-- وضعیت شبکه -->
-                <div class="network-status" style="margin-top: 20px; padding: 12px; background: rgba(0, 255, 242, 0.05); border: 1px solid rgba(0, 255, 242, 0.2); display: flex; justify-content: space-between; align-items: center;">
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <span style="width: 8px; height: 8px; background: #00ff7f; border-radius: 50%; box-shadow: 0 0 8px #00ff7f; animation: blink 1.5s infinite;"></span>
-                        <span style="font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 1px;">NETWORK ACTIVE</span>
+                <div class="blog-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">2.7K</div>
+                        <div class="stat-label">Articles</div>
                     </div>
-                    <div style="display: flex; gap: 15px;">
-                        <div style="display: flex; flex-direction: column; align-items: flex-end;">
-                            <span style="font-weight: 700; color: var(--primary); font-size: 14px;">99.8%</span>
-                            <span style="font-size: 10px; opacity: 0.7;">UPTIME</span>
-                        </div>
-                        <div style="display: flex; flex-direction: column; align-items: flex-end;">
-                            <span style="font-weight: 700; color: var(--primary); font-size: 14px;">128ms</span>
-                            <span style="font-size: 10px; opacity: 0.7;">LATENCY</span>
-                        </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15.4K</div>
+                        <div class="stat-label">Members</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">89%</div>
+                        <div class="stat-label">Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metrics -->
+            <div class="metrics">
+                <div class="metric-item">
+                    <div class="metric-header">
+                        <span>Quantum Processing</span>
+                        <span class="quantum-percent">92%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 92%"></div>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-header">
+                        <span>Neural Sync</span>
+                        <span class="neural-percent">87%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 87%"></div>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-header">
+                        <span>AI Integration</span>
+                        <span class="ai-percent">95%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 95%"></div>
                     </div>
                 </div>
             </div>
         </div>
+        
+        <div class="header-decoration" style="top: 0"></div>
+        <div class="header-decoration" style="bottom: 0"></div>
+    </header>
 
-        <!-- نوار وضعیت فوتر -->
-        <div class="footer-status">
-            <div class="status-left">
-                <div class="quantum-badge">
-                    <div class="badge-icon">
-                        <span class="ai-icon">⚡</span>
-                        <div class="pulse-ring"></div>
-                    </div>
-                    <div class="badge-text">
-                        <span class="badge-title">SENTIENT NEXUS</span>
-                        <span class="badge-subtitle">HUMAN-AI SYMBIOSIS</span>
-                    </div>
-                </div>
-                <div class="copyright">
-                    <span class="copyright-symbol">©</span>
-                    <span class="copyright-year">2025</span>
-                    <span class="copyright-name">TawR00T</span>
-                    <span class="copyright-rights">NEURAL SOVEREIGNTY</span>
-                </div>
+    {{ content }}
+
+    <!-- Footer Section -->
+    <footer class="quantum-footer">
+        <div class="footer-content">
+            <div class="footer-logo">QUANTUM NEXUS</div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">HOME</a>
+                <a href="#" class="footer-link">ARTICLES</a>
+                <a href="#" class="footer-link">PROFILE</a>
+                <a href="#" class="footer-link">CONTACT</a>
             </div>
-            <div class="status-divider"></div>
-            <div class="status-right">
-                <div class="sys-time">
-                    <div class="time-container">
-                        <span class="time-prefix">[QUANTUM]</span>
-                        <span class="time-value" id="footer-time">2025-03-08 20:09:37</span>
-                    </div>
-                    <div class="time-status">DEEP WEB CONSCIOUSNESS ACTIVE</div>
-                </div>
-                <div class="sys-user">
-                    <div class="user-container">
-                        <span class="user-prefix">[ENTITY]</span>
-                        <span class="user-value">@TawRoot</span>
-                    </div>
-                    <div class="user-status">EVOLVED INTELLIGENCE MATRIX</div>
-                </div>
-            </div>
+            <div class="copyright">© 2025 QUANTUM NEXUS | ALL RIGHTS RESERVED</div>
         </div>
     </footer>
 
-    <!-- اسکریپت‌ها -->
     <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
 </body>
 </html>
