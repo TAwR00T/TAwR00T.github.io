@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quantum Blog Interface</title>
+    <!-- اضافه کردن فونت‌های Google -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Share+Tech+Mono&family=Roboto+Condensed:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="cyber-header">
+        <div class="scan-line"></div>
+        <div class="header-content">
+            <!-- System Stats -->
+            <div class="system-stats">
+                <div class="stat-box">
+                    <div class="stat-title">System Time</div>
+                    <div class="stat-value" id="current-time"></div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-title">Current User</div>
+                    <div class="stat-value">tawanamohammadi</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-title">System Status</div>
+                    <div class="stat-value">QUANTUM READY</div>
+                </div>
+            </div>
+
+            <!-- Central Title -->
+            <div class="title-section">
+                <h1 class="main-title">Quantum Nexus</h1>
+                <p class="subtitle">Exploring the Convergence of Technology, AI, and Human Consciousness in the Digital Age</p>
+                <div class="featured-tags">
+                    <span class="tag">#QuantumComputing</span>
+                    <span class="tag">#ArtificialIntelligence</span>
+                    <span class="tag">#FutureWeb</span>
+                </div>
+                <div class="blog-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">2.7K</div>
+                        <div class="stat-label">Articles</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">15.4K</div>
+                        <div class="stat-label">Members</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">89%</div>
+                        <div class="stat-label">Satisfaction</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Metrics -->
+            <div class="metrics">
+                <div class="metric-item">
+                    <div class="metric-header">
+                        <span>Quantum Processing</span>
+                        <span class="quantum-percent">92%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 92%"></div>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-header">
+                        <span>Neural Sync</span>
+                        <span class="neural-percent">87%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 87%"></div>
+                    </div>
+                </div>
+                <div class="metric-item">
+                    <div class="metric-header">
+                        <span>AI Integration</span>
+                        <span class="ai-percent">95%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 95%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="header-decoration" style="top: 0"></div>
+        <div class="header-decoration" style="bottom: 0"></div>
+    </header>
+
+    <!-- Profile Section -->
+    <div class="profile-section">
+        <div class="profile-circle">
+            <div class="hexagon-overlay"></div>
+            <div class="binary-bg"></div>
+            <div class="neon-lines"></div>
+            <div class="profile-icon">T4</div>
+        </div>
+
+        <div class="username-container">
+            <h2 class="glitch-text">T4wR00T</h2>
+            <div class="cyberpunk-subtitle">
+                // QUANTUM MASTERMIND | NEURAL ARCHITECT | SYSTEM INFILTRATOR
+            </div>
+        </div>
+
+        <div class="bio-container">
+            <div class="terminal-text">
+                >>> INITIALIZING PROFILE
+                >>> ACCESSING NEURAL MATRIX...
+                >>> QUANTUM STATE: ACTIVE
+                >>> CORE FUNCTION: Merging human consciousness with artificial intelligence
+                >>> PRIMARY DIRECTIVE: Breaking barriers between neural networks and secure systems
+                >>> STATUS: Deep in the quantum realm, engineering the future of AI security
+            </div>
+        </div>
+    </div>
+
+    <!-- Skills Dashboard -->
+    <div class="skills-container">
+        <!-- QUANTUM SYSTEMS -->
+        <div class="skill-item">
+            <div class="skill-header">
+                <div class="skill-title">
+                    <div class="skill-icon-container">
+                        <span class="skill-icon">⚡</span>
+                        <div class="icon-ring"></div>
+                    </div>
+                    <div class="skill-details">
+                        <h3 class="skill-name">QUANTUM SYSTEMS</h3>
+                        <div class="skill-meta">
+                            <span class="skill-level">MASTERED</span>
+                            <span class="skill-xp">+2.3k XP</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-stats">
+                    <div class="stat-primary">
+                        <span class="skill-percentage">92%</span>
+                        <span class="skill-points">920/1000</span>
+                    </div>
+                    <div class="stat-growth">
+                        <span class="growth-indicator">▲</span>
+                        <span class="growth-value">+5%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-timeline">
+                <div class="timeline-point" style="left: 20%">
+                    <span class="point-marker"></span>
+                    <span class="point-label">Q1</span>
+                </div>
+                <div class="timeline-point" style="left: 50%">
+                    <span class="point-marker"></span>
+                    <span class="point-label">Q2</span>
+                </div>
+                <div class="timeline-point" style="left: 80%">
+                    <span class="point-marker active"></span>
+                    <span class="point-label">Current</span>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-track">
+                    <div class="progress" style="width: 92%">
+                        <div class="progress-glow"></div>
+                    </div>
+                </div>
+                <div class="progress-milestones">
+                    <span class="milestone" data-level="BEGINNER" style="left: 25%"></span>
+                    <span class="milestone" data-level="ADVANCED" style="left: 50%"></span>
+                    <span class="milestone" data-level="EXPERT" style="left: 75%"></span>
+                    <span class="milestone active" data-level="MASTER" style="left: 90%"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- NEURAL ENGINEERING -->
+        <div class="skill-item">
+            <div class="skill-header">
+                <div class="skill-title">
+                    <div class="skill-icon-container">
+                        <span class="skill-icon">🧠</span>
+                        <div class="icon-ring"></div>
+                    </div>
+                    <div class="skill-details">
+                        <h3 class="skill-name">NEURAL ENGINEERING</h3>
+                        <div class="skill-meta">
+                            <span class="skill-level">EXPERT</span>
+                            <span class="skill-xp">+1.8k XP</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-stats">
+                    <div class="stat-primary">
+                        <span class="skill-percentage">88%</span>
+                        <span class="skill-points">880/1000</span>
+                    </div>
+                    <div class="stat-growth">
+                        <span class="growth-indicator">▲</span>
+                        <span class="growth-value">+3%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-timeline">
+                <div class="timeline-point" style="left: 20%">
+                    <span class="point-marker"></span>
+                    <span class="point-label">Q1</span>
+                </div>
+                <div class="timeline-point" style="left: 50%">
+                    <span class="point-marker"></span>
+                    <span class="point-label">Q2</span>
+                </div>
+                <div class="timeline-point" style="left: 80%">
+                    <span class="point-marker active"></span>
+                    <span class="point-label">Current</span>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-track">
+                    <div class="progress" style="width: 88%">
+                        <div class="progress-glow"></div>
+                    </div>
+                </div>
+                <div class="progress-milestones">
+                    <span class="milestone" data-level="BEGINNER" style="left: 25%"></span>
+                    <span class="milestone" data-level="ADVANCED" style="left: 50%"></span>
+                    <span class="milestone active" data-level="EXPERT" style="left: 75%"></span>
+                    <span class="milestone" data-level="MASTER" style="left: 90%"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- SYSTEM SECURITY -->
+        <div class="skill-item">
+            <div class="skill-header">
+                <div class="skill-title">
+                    <div class="skill-icon-container">
+                        <span class="skill-icon">🔐</span>
+                        <div class="icon-ring"></div>
+                    </div>
+                    <div class="skill-details">
+                        <h3 class="skill-name">SYSTEM SECURITY</h3>
+                        <div class="skill-meta">
+                            <span class="skill-level">MASTERED</span>
+                            <span class="skill-xp">+2.5k XP</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-stats">
+                    <div class="stat-primary">
+                        <span class="skill-percentage">95%</span>
+                        <span class="skill-points">950/1000</span>
+                    </div>
+                    <div class="stat-growth">
+                        <span class="growth-indicator">▲</span>
+                        <span class="growth-value">+7%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-timeline">
+                <div class="timeline-point" style="left: 20%">
+                    <span class="point-marker"></span>
+                    <span class="point-label">Q1</span>
+                </div>
+                <div class="timeline-point" style="left: 50%">
+                    <span class="point-marker"></span>
+                    <span class="point-label">Q2</span>
+                </div>
+                <div class="timeline-point" style="left: 80%">
+                    <span class="point-marker active"></span>
+                    <span class="point-label">Current</span>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-track">
+                    <div class="progress" style="width: 95%">
+                        <div class="progress-glow"></div>
+                    </div>
+                </div>
+                <div class="progress-milestones">
+                    <span class="milestone" data-level="BEGINNER" style="left: 25%"></span>
+                    <span class="milestone" data-level="ADVANCED" style="left: 50%"></span>
+                    <span class="milestone" data-level="EXPERT" style="left: 75%"></span>
+                    <span class="milestone active" data-level="MASTER" style="left: 90%"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- AI DEVELOPMENT -->
+        <div class="skill-item">
+            <div class="skill-header">
+                <div class="skill-title">
+                    <div class="skill-icon-container">
+                        <span class="skill-icon">💻</span>
+                        <div class="icon-ring"></div>
+                    </div>
+                    <div class="skill-details">
+                        <h3 class="skill-name">AI DEVELOPMENT</h3>
+                        <div class="skill-meta">
+                            <span class="skill-level">MASTERED</span>
+                            <span class="skill-xp">+2.1k XP</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-stats">
+                    <div class="stat-primary">
+                        <span class="skill-percentage">90%</span>
+                        <span class="skill-points">900/1000</span>
+                    </div>
+                    <div class="stat-growth">
+                        <span class="growth-indicator">▲</span>
+                        <span class="growth-value">+4%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-timeline">
+                <div class="timeline-point" style="left: 20%">
+                    <span class="point-marker"></span>
+                    <span class="point-label">Q1</span>
+                </div>
+                <div class="timeline-point" style="left: 50%">
+                    <span class="point-marker"></span>
+                    <span class="point-label">Q2</span>
+                </div>
+                <div class="timeline-point" style="left: 80%">
+                    <span class="point-marker active"></span>
+                    <span class="point-label">Current</span>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-track">
+                    <div class="progress" style="width: 90%">
+                        <div class="progress-glow"></div>
+                    </div>
+                </div>
+                <div class="progress-milestones">
+                    <span class="milestone" data-level="BEGINNER" style="left: 25%"></span>
+                    <span class="milestone" data-level="ADVANCED" style="left: 50%"></span>
+                    <span class="milestone" data-level="EXPERT" style="left: 75%"></span>
+                    <span class="milestone active" data-level="MASTER" style="left: 90%"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Blog Section -->
+    <div class="blog-section">
+        <div class="section-header">
+            <h2 class="section-title">QUANTUM ARTICLES</h2>
+            <div class="section-controls">
+                <button class="control-btn active">LATEST</button>
+                <button class="control-btn">TRENDING</button>
+                <button class="control-btn">CLASSIFIED</button>
+            </div>
+        </div>
+
+        <div class="blog-grid">
+            <!-- Quantum Computing Card -->
+            <article class="blog-card">
+                <div class="card-header">
+                    <div class="card-meta">
+                        <span class="meta-tag">
+                            <span class="tag-icon">⚛️</span>
+                            QUANTUM
+                        </span>
+                        <span class="meta-time">3.2 HOURS AGO</span>
+                    </div>
+                    <h2 class="card-title">Quantum Entanglement Breakthrough</h2>
+                </div>
+                <div class="card-preview">
+                    <p class="preview-text">
+                        New research demonstrates stable quantum entanglement across unprecedented distances, 
+                        opening possibilities for secure communications...
+                    </p>
+                    <div class="card-metrics">
+                        <div class="metric">
+                            <span class="metric-icon">🔄</span>
+                            <div class="metric-info">
+                                <span class="metric-value">99.7%</span>
+                                <span class="metric-label">Stability</span>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-icon">👁️</span>
+                            <div class="metric-info">
+                                <span class="metric-value">1.2M</span>
+                                <span class="metric-label">Views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">QUANTUM</span>
+                        <span class="tag">PHYSICS</span>
+                    </div>
+                    <button class="card-button">
+                        <span class="btn-text">ACCESS</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Neural Interface Card -->
+            <article class="blog-card">
+                <div class="card-header">
+                    <div class="card-meta">
+                        <span class="meta-tag">
+                            <span class="tag-icon">🧠</span>
+                            NEURAL
+                        </span>
+                        <span class="meta-time">8.5 HOURS AGO</span>
+                    </div>
+                    <h2 class="card-title">Direct Neural Interface Protocol</h2>
+                </div>
+                <div class="card-preview">
+                    <p class="preview-text">
+                        The latest neural interface protocol allows for direct brain-to-system 
+                        communication with minimal latency and enhanced security...
+                    </p>
+                    <div class="card-metrics">
+                        <div class="metric">
+                            <span class="metric-icon">⚡</span>
+                            <div class="metric-info">
+                                <span class="metric-value">0.8ms</span>
+                                <span class="metric-label">Latency</span>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-icon">🔒</span>
+                            <div class="metric-info">
+                                <span class="metric-value">ALPHA</span>
+                                <span class="metric-label">Clearance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">NEURAL</span>
+                        <span class="tag">INTERFACE</span>
+                    </div>
+                    <button class="card-button">
+                        <span class="btn-text">ACCESS</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- Classified Research Card -->
+            <article class="blog-card classified">
+                <div class="card-header">
+                    <div class="card-meta">
+                        <span class="meta-tag">
+                            <span class="tag-icon">🔬</span>
+                            CLASSIFIED
+                        </span>
+                        <span class="meta-time">1.5 DAYS AGO</span>
+                    </div>
+                    <h2 class="card-title">Consciousness Transfer Protocol</h2>
+                </div>
+                <div class="card-preview">
+                    <p class="preview-text">
+                        Experimental research into the transfer of human consciousness to quantum neural networks 
+                        shows promising initial results...
+                    </p>
+                    <div class="card-metrics">
+                        <div class="metric">
+                            <span class="metric-icon">📊</span>
+                            <div class="metric-info">
+                                <span class="metric-value">78.3%</span>
+                                <span class="metric-label">Success Rate</span>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-icon">🔐</span>
+                            <div class="metric-info">
+                                <span class="metric-value">OMEGA</span>
+                                <span class="metric-label">Clearance</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">CLASSIFIED</span>
+                    </div>
+                    <button class="card-button locked">
+                        <span class="btn-icon">🔒</span>
+                        <span class="btn-text">REQUEST ACCESS</span>
+                    </button>
+                </div>
+            </article>
+
+            <!-- AI Development Card -->
+            <article class="blog-card">
+                <div class="card-header">
+                    <div class="card-meta">
+                        <span class="meta-tag">
+                            <span class="tag-icon">🤖</span>
+                            AI DEV
+                        </span>
+                        <span class="meta-time">12.5 HOURS AGO</span>
+                    </div>
+                    <h2 class="card-title">Neural Network Self-Evolution</h2>
+                </div>
+                <div class="card-preview">
+                    <p class="preview-text">
+                        Latest developments in self-evolving neural networks show promising results 
+                        in autonomous learning and adaptation...
+                    </p>
+                    <div class="card-metrics">
+                        <div class="metric">
+                            <span class="metric-icon">📈</span>
+                            <div class="metric-info">
+                                <span class="metric-value">95.7%</span>
+                                <span class="metric-label">Efficiency</span>
+                            </div>
+                        </div>
+                        <div class="metric">
+                            <span class="metric-icon">👁️</span>
+                            <div class="metric-info">
+                                <span class="metric-value">650K</span>
+                                <span class="metric-label">Views</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <div class="tags">
+                        <span class="tag">AI</span>
+                        <span class="tag">NEURAL</span>
+                    </div>
+                    <button class="card-button">
+                        <span class="btn-text">ACCESS</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="quantum-footer">
+        <div class="footer-content">
+            <div class="footer-logo">QUANTUM NEXUS</div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">HOME</a>
+                <a href="#" class="footer-link">ARTICLES</a>
+                <a href="#" class="footer-link">PROFILE</a>
+                <a href="#" class="footer-link">CONTACT</a>
+            </div>
+            <div class="copyright">© 2025 QUANTUM NEXUS | ALL RIGHTS RESERVED</div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
+                
