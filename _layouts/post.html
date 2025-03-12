@@ -1,27 +1,259 @@
 ---
 layout: default
 ---
+
 <div class="post-container">
-    <article class="post">
-        <header class="post-header">
-            <div class="post-meta">
-                <span class="post-date">{{ page.date | date: "%Y-%m-%d" }}</span>
-                <span class="post-category">{{ page.category }}</span>
+    <div class="post-header">
+        <div class="post-meta">
+            <div class="meta-left">
+                <span class="post-category">
+                    <span class="category-icon">
+                        {% if page.category == "QUANTUM" %}⚛️
+                        {% elsif page.category == "NEURAL" %}🧠
+                        {% elsif page.category == "AI" %}🤖
+                        {% elsif page.category == "SECURITY" %}🔒
+                        {% elsif page.category == "CLASSIFIED" %}🔬
+                        {% else %}📡
+                        {% endif %}
+                    </span>
+                    {{ page.category | default: "QUANTUM" }}
+                </span>
+                <span class="post-date">{{ page.date | date: "%Y-%m-%d %H:%M" }}</span>
             </div>
-            <h1 class="post-title">{{ page.title }}</h1>
-            <div class="post-author">BY {{ page.author | default: site.author }}</div>
-        </header>
-        
-        <div class="post-content">
-            {{ content }}
+            <div class="meta-right">
+                <span class="post-status">
+                    {% if page.classified %}
+                    <span class="status-icon">🔒</span>
+                    CLASSIFIED
+                    {% else %}
+                    <span class="status-icon">✓</span>
+                    PUBLIC
+                    {% endif %}
+                </span>
+            </div>
         </div>
         
-        <footer class="post-footer">
-            <div class="post-tags">
-                {% for tag in page.tags %}
-                <span class="tag">#{{ tag }}</span>
+        <h1 class="post-title">{{ page.title }}</h1>
+        
+        <div class="post-author">
+            <div class="author-avatar">
+                <div class="avatar-glow"></div>
+                <span class="avatar-text">{{ page.author | slice: 0, 2 | upcase }}</span>
+            </div>
+            <div class="author-info">
+                <div class="author-name">{{ page.author | default: site.author }}</div>
+                <div class="author-role">{{ page.author_role | default: "QUANTUM RESEARCHER" }}</div>
+            </div>
+        </div>
+        
+        {% if page.tags.size > 0 %}
+        <div class="post-tags">
+            {% for tag in page.tags %}
+            <span class="tag">#{{ tag }}</span>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    
+    <div class="post-content">
+        <div class="content-metrics">
+            <div class="metric">
+                <span class="metric-icon">⏱️</span>
+                <div class="metric-info">
+                    <span class="metric-value">{{ page.read_time | default: "5" }} MIN</span>
+                    <span class="metric-label">Read Time</span>
+                </div>
+            </div>
+            <div class="metric">
+                <span class="metric-icon">📊</span>
+                <div class="metric-info">
+                    <span class="metric-value">{{ page.complexity | default: "MEDIUM" }}</span>
+                    <span class="metric-label">Complexity</span>
+                </div>
+            </div>
+            {% if page.clearance %}
+            <div class="metric">
+                <span class="metric-icon">🔐</span>
+                <div class="metric-info">
+                    <span class="metric-value">{{ page.clearance }}</span>
+                    <span class="metric-label">Clearance</span>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+        
+        <div class="content-body">
+            <div class="terminal-frame">
+                <div class="terminal-header">
+                    <div class="terminal-controls">
+                        <span class="control"></span>
+                        <span class="control"></span>
+                        <span class="control"></span>
+                    </div>
+                    <div class="terminal-title">QUANTUM-TERMINAL</div>
+                    <div class="terminal-options">
+                        <span class="option">⚙️</span>
+                    </div>
+                </div>
+                <div class="terminal-body">
+                    {{ content }}
+                </div>
+            </div>
+            
+            {% if page.data_visualization %}
+            <div class="data-visualization">
+                <div class="visualization-header">
+                    <h3>DATA VISUALIZATION</h3>
+                    <div class="visualization-controls">
+                        <button class="viz-control active">2D</button>
+                        <button class="viz-control">3D</button>
+                        <button class="viz-control">QUANTUM</button>
+                    </div>
+                </div>
+                <div class="visualization-container">
+                    <img src="{{ page.data_visualization }}" alt="Data Visualization">
+                    <div class="visualization-overlay"></div>
+                </div>
+            </div>
+            {% endif %}
+            
+            {% if page.equations %}
+            <div class="quantum-equations">
+                <h3>QUANTUM EQUATIONS</h3>
+                <div class="equations-container">
+                    {{ page.equations }}
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    <div class="post-footer">
+        <div class="post-metrics">
+            <div class="metric">
+                <span class="metric-icon">👁️</span>
+                <div class="metric-info">
+                    <span class="metric-value">{{ page.views | default: "1.2K" }}</span>
+                    <span class="metric-label">Views</span>
+                </div>
+            </div>
+            <div class="metric">
+                <span class="metric-icon">💬</span>
+                <div class="metric-info">
+                    <span class="metric-value">{{ page.comments | default: "42" }}</span>
+                    <span class="metric-label">Comments</span>
+                </div>
+            </div>
+            <div class="metric">
+                <span class="metric-icon">⚡</span>
+                <div class="metric-info">
+                    <span class="metric-value">{{ page.energy | default: "89%" }}</span>
+                    <span class="metric-label">Energy</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="post-actions">
+            <button class="quantum-btn">
+                <span class="btn-icon">💾</span>
+                SAVE TO NEURAL CACHE
+            </button>
+            <button class="quantum-btn">
+                <span class="btn-icon">🔄</span>
+                SYNC WITH QUANTUM NETWORK
+            </button>
+        </div>
+        
+        {% if page.related_posts.size > 0 %}
+        <div class="related-posts">
+            <h3>RELATED QUANTUM RESEARCH</h3>
+            <div class="related-grid">
+                {% for post in page.related_posts limit:3 %}
+                <a href="{{ post.url }}" class="related-post">
+                    <div class="related-title">{{ post.title }}</div>
+                    <div class="related-meta">
+                        <span class="related-category">{{ post.category }}</span>
+                        <span class="related-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                    </div>
+                </a>
                 {% endfor %}
             </div>
-        </footer>
-    </article>
+        </div>
+        {% endif %}
+        
+        {% if page.comments != false %}
+        <div class="comments-section">
+            <h3>NEURAL FEEDBACK</h3>
+            <div class="comment-form">
+                <div class="input-field">
+                    <textarea required></textarea>
+                    <div class="field-glow"></div>
+                    <label>ENTER NEURAL FEEDBACK</label>
+                </div>
+                <button class="quantum-btn">
+                    <span class="btn-icon">📤</span>
+                    TRANSMIT
+                </button>
+            </div>
+            
+            <div class="comments-list">
+                {% for i in (1..3) %}
+                <div class="comment">
+                    <div class="comment-header">
+                        <div class="comment-author">
+                            <div class="author-avatar">
+                                <span class="avatar-text">U{{ i }}</span>
+                            </div>
+                            <div class="author-info">
+                                <div class="author-name">QUANTUM_USER_{{ i }}</div>
+                                <div class="author-role">NEURAL NETWORK {{ i }}</div>
+                            </div>
+                        </div>
+                        <div class="comment-date">2025-03-0{{ i }} 14:3{{ i }}:00</div>
+                    </div>
+                    <div class="comment-body">
+                        Sample neural feedback {{ i }}. This is where users can provide their thoughts on the quantum research presented in this article.
+                    </div>
+                    <div class="comment-actions">
+                        <button class="action-btn">
+                            <span class="btn-icon">⚡</span>
+                            AMPLIFY
+                        </button>
+                        <button class="action-btn">
+                            <span class="btn-icon">💬</span>
+                            RESPOND
+                        </button>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+
+<div class="quantum-navigation">
+    <div class="nav-previous">
+        {% if page.previous %}
+        <a href="{{ page.previous.url }}" class="nav-link">
+            <span class="nav-arrow">←</span>
+            <div class="nav-info">
+                <div class="nav-label">PREVIOUS RESEARCH</div>
+                <div class="nav-title">{{ page.previous.title }}</div>
+            </div>
+        </a>
+        {% endif %}
+    </div>
+    
+    <div class="nav-next">
+        {% if page.next %}
+        <a href="{{ page.next.url }}" class="nav-link">
+            <div class="nav-info">
+                <div class="nav-label">NEXT RESEARCH</div>
+                <div class="nav-title">{{ page.next.title }}</div>
+            </div>
+            <span class="nav-arrow">→</span>
+        </a>
+        {% endif %}
+    </div>
 </div>
