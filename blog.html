@@ -4,99 +4,157 @@ title: Blog
 permalink: /blog/
 ---
 
-<div class="blog-container">
-    <header class="blog-header">
-        <h1 class="blog-title">Quantum Nexus Blog</h1>
-        <p class="blog-description">Explore the latest insights on quantum computing, neural technology, and AI advancements</p>
+<div class="blog-wrapper">
+    <header class="blog-hero">
+        <div class="blog-hero-content">
+            <h1 class="blog-hero-title">Quantum Nexus Blog</h1>
+            <p class="blog-hero-subtitle">Exploring the frontiers of technology and innovation</p>
+        </div>
     </header>
 
-    <div class="blog-categories">
-        <button class="category-btn active" data-category="all">All Posts</button>
-        {% assign categories = site.posts | map: "categories" | uniq | compact | sort %}
-        {% for category in categories %}
-            <button class="category-btn" data-category="{{ category }}">{{ category }}</button>
-        {% endfor %}
-    </div>
-
-    <div class="blog-content">
-        <div class="posts-container">
-            {% for post in site.posts %}
-            <article class="post-card" data-categories="{{ post.categories | join: ' ' }}">
-                <div class="post-image">
-                    {% if post.image %}
-                    <img src="{{ post.image }}" alt="{{ post.title }}">
-                    {% else %}
-                    <img src="/assets/images/default-post.jpg" alt="{{ post.title }}">
-                    {% endif %}
-                </div>
-                <div class="post-content">
-                    {% if post.categories %}
-                    <span class="post-category">{{ post.categories | first }}</span>
-                    {% endif %}
-                    <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
-                    <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
-                    <div class="post-meta">
-                        <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
-                        {% if post.author %}
-                        <span class="post-author">by {{ post.author }}</span>
-                        {% endif %}
-                    </div>
-                </div>
-            </article>
-            {% endfor %}
+    <div class="blog-container">
+        <div class="blog-categories-wrapper">
+            <div class="blog-categories">
+                <button class="category-btn active" data-category="all">All Posts</button>
+                {% assign categories = site.posts | map: "categories" | uniq | compact | sort %}
+                {% for category in categories %}
+                    <button class="category-btn" data-category="{{ category }}">{{ category }}</button>
+                {% endfor %}
+            </div>
         </div>
 
-        <aside class="blog-sidebar">
-            <div class="sidebar-section">
-                <h3 class="sidebar-title">Recent Posts</h3>
-                <ul class="recent-posts">
-                    {% for post in site.posts limit:5 %}
-                    <li>
-                        <a href="{{ post.url }}">{{ post.title }}</a>
-                        <span class="post-date">{{ post.date | date: "%b %d" }}</span>
-                    </li>
-                    {% endfor %}
-                </ul>
+        <div class="blog-content">
+            <div class="posts-container">
+                {% for post in site.posts %}
+                <article class="post-card" data-categories="{{ post.categories | join: ' ' }}">
+                    <div class="post-image">
+                        {% if post.image %}
+                        <img src="{{ post.image }}" alt="{{ post.title }}">
+                        {% else %}
+                        <img src="/assets/images/default-post.jpg" alt="{{ post.title }}">
+                        {% endif %}
+                    </div>
+                    <div class="post-content">
+                        {% if post.categories %}
+                        <span class="post-category">{{ post.categories | first }}</span>
+                        {% endif %}
+                        <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
+                        <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+                        <div class="post-meta">
+                            <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
+                            {% if post.author %}
+                            <span class="post-author">by {{ post.author }}</span>
+                            {% endif %}
+                        </div>
+                    </div>
+                </article>
+                {% endfor %}
             </div>
 
-            <div class="sidebar-section">
-                <h3 class="sidebar-title">Popular Categories</h3>
-                <div class="category-tags">
-                    {% for category in categories %}
-                    <a href="#" class="category-tag" data-category="{{ category }}">{{ category }}</a>
-                    {% endfor %}
+            <aside class="blog-sidebar">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Recent Posts</h3>
+                    <ul class="recent-posts">
+                        {% for post in site.posts limit:5 %}
+                        <li>
+                            <a href="{{ post.url }}">{{ post.title }}</a>
+                            <span class="post-date">{{ post.date | date: "%b %d" }}</span>
+                        </li>
+                        {% endfor %}
+                    </ul>
                 </div>
-            </div>
-        </aside>
+
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">Popular Categories</h3>
+                    <div class="category-tags">
+                        {% for category in categories %}
+                        <a href="#" class="category-tag" data-category="{{ category }}">{{ category }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </aside>
+        </div>
     </div>
 </div>
 
 <style>
-    /* Blog Styles */
+    /* Blog Styles - Light Theme */
+    :root {
+        --blog-bg: #f8f9fa;
+        --blog-text: #333;
+        --blog-text-light: #666;
+        --blog-card-bg: #fff;
+        --blog-primary: #3a86ff;
+        --blog-primary-light: #e0ecff;
+        --blog-accent: #ff006e;
+        --blog-border: #e0e0e0;
+        --blog-shadow-sm: 0 2px 5px rgba(0,0,0,0.05);
+        --blog-shadow-md: 0 4px 10px rgba(0,0,0,0.08);
+        --blog-shadow-lg: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    .blog-wrapper {
+        background-color: var(--blog-bg);
+        color: var(--blog-text);
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .blog-hero {
+        background: linear-gradient(135deg, #3a86ff, #8338ec);
+        color: white;
+        padding: 5rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .blog-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NiIgaGVpZ2h0PSIxMDAiPgo8cmVjdCB3aWR0aD0iNTYiIGhlaWdodD0iMTAwIiBmaWxsPSIjZmZmZmZmMDUiPjwvcmVjdD4KPHBhdGggZD0iTTI4IDY2TDAgNTBMMCAxNkwyOCAwTDU2IDE2TDU2IDUwTDI4IDY2TDI4IDEwMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmZmZmMTAiIHN0cm9rZS13aWR0aD0iMiI+PC9wYXRoPgo8cGF0aCBkPSJNMjggMEwyOCAzNEw1NiA1MEw1NiAxNkwyOCAwWiIgZmlsbD0iI2ZmZmZmZjA1IiBzdHJva2U9IiNmZmZmZmYxMCIgc3Ryb2tlLXdpZHRoPSIyIj48L3BhdGg+Cjwvc3ZnPg==');
+        opacity: 0.2;
+    }
+
+    .blog-hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .blog-hero-title {
+        font-family: 'Poppins', sans-serif;
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        letter-spacing: -0.5px;
+    }
+
+    .blog-hero-subtitle {
+        font-size: 1.25rem;
+        opacity: 0.9;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
     .blog-container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 2rem 1rem;
+        padding: 0 1rem;
     }
 
-    .blog-header {
-        text-align: center;
-        margin-bottom: 3rem;
-    }
-
-    .blog-title {
-        font-family: 'Poppins', sans-serif;
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: var(--text-color);
-        margin-bottom: 1rem;
-    }
-
-    .blog-description {
-        color: var(--text-light);
-        font-size: 1.1rem;
-        max-width: 700px;
-        margin: 0 auto;
+    .blog-categories-wrapper {
+        background-color: white;
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        box-shadow: var(--blog-shadow-sm);
+        margin-bottom: 2rem;
     }
 
     .blog-categories {
@@ -104,29 +162,33 @@ permalink: /blog/
         flex-wrap: wrap;
         justify-content: center;
         gap: 0.5rem;
-        margin-bottom: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
     }
 
     .category-btn {
-        background-color: var(--card-bg);
-        border: 1px solid var(--border-color);
-        color: var(--text-color);
+        background-color: var(--blog-card-bg);
+        border: 1px solid var(--blog-border);
+        color: var(--blog-text);
         padding: 0.5rem 1rem;
         border-radius: 2rem;
         cursor: pointer;
         transition: all 0.3s ease;
+        font-size: 0.9rem;
     }
 
     .category-btn.active, .category-btn:hover {
-        background-color: var(--primary-color);
+        background-color: var(--blog-primary);
         color: white;
-        border-color: var(--primary-color);
+        border-color: var(--blog-primary);
     }
 
     .blog-content {
         display: grid;
         grid-template-columns: 2fr 1fr;
         gap: 2rem;
+        margin-bottom: 4rem;
     }
 
     .posts-container {
@@ -138,16 +200,17 @@ permalink: /blog/
     .post-card {
         display: grid;
         grid-template-columns: 1fr 2fr;
-        background-color: var(--card-bg);
+        background-color: var(--blog-card-bg);
         border-radius: 1rem;
         overflow: hidden;
-        box-shadow: var(--shadow-md);
+        box-shadow: var(--blog-shadow-md);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid var(--blog-border);
     }
 
     .post-card:hover {
         transform: translateY(-5px);
-        box-shadow: var(--shadow-lg);
+        box-shadow: var(--blog-shadow-lg);
     }
 
     .post-image {
@@ -167,8 +230,8 @@ permalink: /blog/
 
     .post-category {
         display: inline-block;
-        background-color: var(--hover-color);
-        color: var(--primary-color);
+        background-color: var(--blog-primary-light);
+        color: var(--blog-primary);
         padding: 0.25rem 0.75rem;
         border-radius: 1rem;
         font-size: 0.8rem;
@@ -185,41 +248,45 @@ permalink: /blog/
     }
 
     .post-title a {
-        color: var(--text-color);
+        color: var(--blog-text);
         text-decoration: none;
         transition: color 0.3s ease;
     }
 
     .post-title a:hover {
-        color: var(--primary-color);
+        color: var(--blog-primary);
     }
 
     .post-excerpt {
-        color: var(--text-light);
+        color: var(--blog-text-light);
         margin-bottom: 1rem;
         font-size: 0.95rem;
+        line-height: 1.6;
     }
 
     .post-meta {
         display: flex;
         justify-content: space-between;
-        color: var(--text-light);
+        color: var(--blog-text-light);
         font-size: 0.85rem;
+        border-top: 1px solid var(--blog-border);
+        padding-top: 1rem;
     }
 
     /* Sidebar Styles */
     .blog-sidebar {
         position: sticky;
-        top: 2rem;
+        top: 5rem;
         align-self: start;
     }
 
     .sidebar-section {
-        background-color: var(--card-bg);
+        background-color: var(--blog-card-bg);
         border-radius: 1rem;
         padding: 1.5rem;
         margin-bottom: 2rem;
-        box-shadow: var(--shadow-sm);
+        box-shadow: var(--blog-shadow-sm);
+        border: 1px solid var(--blog-border);
     }
 
     .sidebar-title {
@@ -228,17 +295,20 @@ permalink: /blog/
         font-weight: 600;
         margin-bottom: 1rem;
         padding-bottom: 0.5rem;
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--blog-border);
+        color: var(--blog-text);
     }
 
     .recent-posts {
         list-style: none;
+        padding: 0;
+        margin: 0;
     }
 
     .recent-posts li {
         margin-bottom: 0.75rem;
         padding-bottom: 0.75rem;
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--blog-border);
     }
 
     .recent-posts li:last-child {
@@ -248,7 +318,7 @@ permalink: /blog/
     }
 
     .recent-posts a {
-        color: var(--text-color);
+        color: var(--blog-text);
         text-decoration: none;
         font-weight: 500;
         transition: color 0.3s ease;
@@ -257,12 +327,12 @@ permalink: /blog/
     }
 
     .recent-posts a:hover {
-        color: var(--primary-color);
+        color: var(--blog-primary);
     }
 
     .recent-posts .post-date {
         font-size: 0.8rem;
-        color: var(--text-light);
+        color: var(--blog-text-light);
     }
 
     .category-tags {
@@ -273,8 +343,8 @@ permalink: /blog/
 
     .category-tag {
         display: inline-block;
-        background-color: var(--hover-color);
-        color: var(--primary-color);
+        background-color: var(--blog-primary-light);
+        color: var(--blog-primary);
         padding: 0.25rem 0.75rem;
         border-radius: 1rem;
         font-size: 0.8rem;
@@ -283,7 +353,7 @@ permalink: /blog/
     }
 
     .category-tag:hover {
-        background-color: var(--primary-color);
+        background-color: var(--blog-primary);
         color: white;
     }
 
@@ -299,12 +369,26 @@ permalink: /blog/
     }
 
     @media (max-width: 768px) {
+        .blog-hero-title {
+            font-size: 2.5rem;
+        }
+
         .post-card {
             grid-template-columns: 1fr;
         }
 
         .post-image {
             height: 200px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .blog-hero-title {
+            font-size: 2rem;
+        }
+        
+        .blog-hero {
+            padding: 3rem 1rem;
         }
     }
 </style>
