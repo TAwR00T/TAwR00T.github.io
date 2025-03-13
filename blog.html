@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quantum Nexus Blog</title>
+    <title>TAwR00T Blog</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset & Base Styles */
         *, *::before, *::after {
@@ -16,22 +16,22 @@
         }
 
         :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #e0e7ff;
-            --accent: #f43f5e;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --bg: #f8fafc;
-            --card-bg: #ffffff;
-            --border: #e2e8f0;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            --primary: #00ff00;
+            --primary-dark: #00cc00;
+            --primary-light: #ccffcc;
+            --accent: #ff00ff;
+            --text: #f0f0f0;
+            --text-light: #a0a0a0;
+            --bg: #121212;
+            --card-bg: #1e1e1e;
+            --border: #333333;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.4);
+            --shadow-lg: 0 10px 15px rgba(0,0,0,0.5);
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
@@ -49,13 +49,14 @@
 
         /* Header Styles */
         .blog-header {
-            background: linear-gradient(to right, #6366f1, #8b5cf6);
-            color: white;
+            background: linear-gradient(to right, #000000, #1a1a1a);
+            color: var(--primary);
             padding: 1.5rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
             box-shadow: var(--shadow-md);
+            border-bottom: 1px solid var(--primary);
         }
 
         .header-container {
@@ -68,9 +69,9 @@
         }
 
         .blog-logo {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Fira Code', monospace;
             font-weight: 700;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
             letter-spacing: -0.5px;
         }
 
@@ -83,12 +84,12 @@
         .logo-icon {
             width: 32px;
             height: 32px;
-            background-color: white;
-            border-radius: 8px;
+            background-color: var(--primary);
+            border-radius: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary);
+            color: black;
             font-weight: 800;
         }
 
@@ -100,27 +101,28 @@
 
         .nav-link {
             font-weight: 500;
-            transition: opacity 0.2s;
+            transition: color 0.2s;
         }
 
         .nav-link:hover {
-            opacity: 0.8;
+            color: var(--primary);
         }
 
         .home-link {
             padding: 0.5rem 1rem;
-            background-color: rgba(255, 255, 255, 0.15);
-            border-radius: 6px;
-            backdrop-filter: blur(5px);
+            background-color: rgba(0, 255, 0, 0.15);
+            border-radius: 4px;
+            border: 1px solid var(--primary);
         }
 
         /* Hero Section */
         .blog-hero {
             padding: 5rem 0 3rem;
             text-align: center;
-            background-color: var(--primary-light);
+            background-color: #0a0a0a;
             position: relative;
             overflow: hidden;
+            border-bottom: 1px solid var(--primary);
         }
 
         .blog-hero::before {
@@ -130,8 +132,8 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236366f1' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.5;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2300ff00' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.2;
         }
 
         .hero-container {
@@ -143,12 +145,13 @@
         }
 
         .hero-title {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Fira Code', monospace;
             font-size: 3rem;
             font-weight: 700;
             margin-bottom: 1rem;
-            color: var(--primary-dark);
+            color: var(--primary);
             line-height: 1.2;
+            text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
         }
 
         .hero-subtitle {
@@ -167,12 +170,18 @@
         .search-input {
             width: 100%;
             padding: 1rem 1.5rem;
-            border-radius: 9999px;
-            border: none;
+            border-radius: 4px;
+            border: 1px solid var(--primary);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: var(--text);
             box-shadow: var(--shadow-md);
             font-family: inherit;
             font-size: 1rem;
             padding-left: 3rem;
+        }
+
+        .search-input::placeholder {
+            color: var(--text-light);
         }
 
         .search-icon {
@@ -180,17 +189,18 @@
             left: 1.25rem;
             top: 50%;
             transform: translateY(-50%);
-            color: var(--text-light);
+            color: var(--primary);
         }
 
         /* Categories Section */
         .categories-section {
-            background-color: white;
+            background-color: #0a0a0a;
             padding: 1rem 0;
             position: sticky;
             top: 72px;
             z-index: 90;
             box-shadow: var(--shadow-sm);
+            border-bottom: 1px solid var(--border);
         }
 
         .categories-container {
@@ -208,7 +218,7 @@
             border: 1px solid var(--border);
             color: var(--text);
             padding: 0.5rem 1.25rem;
-            border-radius: 9999px;
+            border-radius: 4px;
             font-family: inherit;
             font-size: 0.9rem;
             font-weight: 500;
@@ -218,12 +228,12 @@
 
         .category-btn.active {
             background-color: var(--primary);
-            color: white;
+            color: black;
             border-color: var(--primary);
         }
 
         .category-btn:hover:not(.active) {
-            background-color: var(--primary-light);
+            border-color: var(--primary);
             color: var(--primary);
         }
 
@@ -246,7 +256,7 @@
 
         .post-card {
             background-color: var(--card-bg);
-            border-radius: 1rem;
+            border-radius: 4px;
             overflow: hidden;
             box-shadow: var(--shadow-md);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -258,17 +268,26 @@
         .post-card:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
         }
 
         .post-image {
             height: 100%;
             min-height: 220px;
+            background-color: #0a0a0a;
+            position: relative;
         }
 
         .post-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .post-card:hover .post-image img {
+            opacity: 1;
         }
 
         .post-details {
@@ -279,18 +298,19 @@
 
         .post-category {
             display: inline-block;
-            background-color: var(--primary-light);
+            background-color: rgba(0, 255, 0, 0.1);
             color: var(--primary);
             padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
+            border-radius: 4px;
             font-size: 0.8rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
             align-self: flex-start;
+            border: 1px solid var(--primary);
         }
 
         .post-title {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Fira Code', monospace;
             font-size: 1.5rem;
             font-weight: 600;
             margin-bottom: 0.75rem;
@@ -332,6 +352,7 @@
 
         .post-date {
             font-weight: 500;
+            font-family: 'Fira Code', monospace;
         }
 
         /* Sidebar */
@@ -343,7 +364,7 @@
 
         .sidebar-section {
             background-color: var(--card-bg);
-            border-radius: 1rem;
+            border-radius: 4px;
             padding: 1.5rem;
             margin-bottom: 2rem;
             box-shadow: var(--shadow-sm);
@@ -351,13 +372,13 @@
         }
 
         .sidebar-title {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Fira Code', monospace;
             font-size: 1.1rem;
             font-weight: 600;
             margin-bottom: 1.25rem;
             padding-bottom: 0.75rem;
             border-bottom: 1px solid var(--border);
-            color: var(--text);
+            color: var(--primary);
         }
 
         .recent-posts {
@@ -391,6 +412,7 @@
         .recent-post-date {
             font-size: 0.8rem;
             color: var(--text-light);
+            font-family: 'Fira Code', monospace;
         }
 
         .tag-cloud {
@@ -401,25 +423,26 @@
 
         .tag {
             display: inline-block;
-            background-color: var(--primary-light);
+            background-color: rgba(0, 255, 0, 0.1);
             color: var(--primary);
             padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
+            border-radius: 4px;
             font-size: 0.8rem;
             font-weight: 500;
             transition: all 0.2s;
+            border: 1px solid var(--primary);
         }
 
         .tag:hover {
             background-color: var(--primary);
-            color: white;
+            color: black;
         }
 
         /* Footer */
         .blog-footer {
-            background-color: white;
+            background-color: #0a0a0a;
             padding: 2rem 0;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--primary);
             margin-top: 3rem;
         }
 
@@ -433,10 +456,15 @@
         }
 
         .footer-logo {
-            font-family: 'Outfit', sans-serif;
+            font-family: 'Fira Code', monospace;
             font-weight: 600;
             font-size: 1.25rem;
-            color: var(--text);
+            color: var(--primary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem;
         }
 
         .footer-links {
@@ -515,166 +543,3 @@
             </nav>
         </div>
     </header>
-
-    <section class="blog-hero">
-        <div class="hero-container">
-            <h1 class="hero-title">Exploring the Frontiers of Technology</h1>
-            <p class="hero-subtitle">Discover insights, innovations, and ideas shaping the future of quantum computing and beyond.</p>
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search articles...">
-                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
-        </div>
-    </section>
-
-    <section class="categories-section">
-        <div class="categories-container">
-            <button class="category-btn active" data-category="all">All Posts</button>
-            {% assign categories = site.posts | map: "categories" | uniq | compact | sort %}
-            {% for category in categories %}
-                <button class="category-btn" data-category="{{ category }}">{{ category }}</button>
-            {% endfor %}
-        </div>
-    </section>
-
-    <main class="main-content">
-        <div class="posts-grid">
-            {% for post in site.posts %}
-            <article class="post-card" data-categories="{{ post.categories | join: ' ' }}">
-                <div class="post-image">
-                    {% if post.image %}
-                    <img src="{{ post.image }}" alt="{{ post.title }}">
-                    {% else %}
-                    <img src="/assets/images/default-post.jpg" alt="{{ post.title }}">
-                    {% endif %}
-                </div>
-                <div class="post-details">
-                    {% if post.categories %}
-                    <span class="post-category">{{ post.categories | first }}</span>
-                    {% endif %}
-                    <h2 class="post-title"><a href="{{ post.url }}">{{ post.title }}</a></h2>
-                    <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
-                    <div class="post-meta">
-                        <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
-                        {% if post.author %}
-                        <span class="post-author">by {{ post.author }}</span>
-                        {% endif %}
-                    </div>
-                </div>
-            </article>
-            {% endfor %}
-        </div>
-
-        <aside class="blog-sidebar">
-            <div class="sidebar-section">
-                <h3 class="sidebar-title">Recent Posts</h3>
-                <ul class="recent-posts">
-                    {% for post in site.posts limit:5 %}
-                    <li>
-                        <a href="{{ post.url }}" class="recent-post-link">{{ post.title }}</a>
-                        <span class="recent-post-date">{{ post.date | date: "%b %d, %Y" }}</span>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-
-            <div class="sidebar-section">
-                <h3 class="sidebar-title">Categories</h3>
-                <div class="tag-cloud">
-                    {% for category in categories %}
-                    <a href="#" class="tag" data-category="{{ category }}">{{ category }}</a>
-                    {% endfor %}
-                </div>
-            </div>
-        </aside>
-    </main>
-
-    <footer class="blog-footer">
-        <div class="footer-container">
-            <div class="footer-logo">Quantum Nexus</div>
-            <div class="footer-links">
-                <a href="/privacy" class="footer-link">Privacy Policy</a>
-                <a href="/terms" class="footer-link">Terms of Use</a>
-                <a href="/contact" class="footer-link">Contact</a>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const categoryButtons = document.querySelectorAll('.category-btn');
-            const categoryTags = document.querySelectorAll('.tag');
-            const postCards = document.querySelectorAll('.post-card');
-            const searchInput = document.querySelector('.search-input');
-
-            // Filter posts by category
-            function filterPosts(category) {
-                postCards.forEach(card => {
-                    if (category === 'all' || card.dataset.categories.includes(category)) {
-                        card.style.display = 'grid';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            }
-
-            // Set active category button
-            function setActiveButton(activeButton) {
-                categoryButtons.forEach(button => {
-                    button.classList.remove('active');
-                });
-                activeButton.classList.add('active');
-            }
-
-            // Add event listeners to category buttons
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const category = this.dataset.category;
-                    filterPosts(category);
-                    setActiveButton(this);
-                });
-            });
-
-            // Add event listeners to category tags
-            categoryTags.forEach(tag => {
-                tag.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const category = this.dataset.category;
-                    filterPosts(category);
-                    
-                    // Find and activate the corresponding button
-                    categoryButtons.forEach(button => {
-                        if (button.dataset.category === category) {
-                            setActiveButton(button);
-                        }
-                    });
-                });
-            });
-
-            // Search functionality
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                
-                if (searchTerm.length > 2) {
-                    postCards.forEach(card => {
-                        const title = card.querySelector('.post-title').textContent.toLowerCase();
-                        const excerpt = card.querySelector('.post-excerpt').textContent.toLowerCase();
-                        
-                        if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
-                            card.style.display = 'grid';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                } else if (searchTerm.length === 0) {
-                    // Reset to current category filter
-                    const activeCategory = document.querySelector('.category-btn.active').dataset.category;
-                    filterPosts(activeCategory);
-                }
-            });
-        });
-    </script>
-</body>
-</html>
