@@ -1,45 +1,58 @@
+---
+layout: null
+---
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TAwR00T Blog - AI, Technology & Programming</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>بلاگ هوش مصنوعی</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* Reset & Base Styles */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        :root {
+            --primary-color: #3498db;
+            --primary-dark: #2980b9;
+            --secondary-color: #6c5ce7;
+            --accent-color: #00cec9;
+            --dark-color: #2d3436;
+            --light-color: #f5f6fa;
+            --gray-color: #636e72;
+            --gray-light: #dfe6e9;
+            --white-color: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
         }
 
-        :root {
-            --primary: #3a86ff;
-            --primary-dark: #2970e6;
-            --primary-light: #e0ecff;
-            --accent: #ff006e;
-            --text: #333333;
-            --text-light: #666666;
-            --bg: #f8f9fa;
-            --card-bg: #ffffff;
-            --border: #e0e0e0;
-            --shadow-sm: 0 2px 5px rgba(0,0,0,0.05);
-            --shadow-md: 0 4px 10px rgba(0,0,0,0.08);
-            --shadow-lg: 0 10px 20px rgba(0,0,0,0.1);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
+            font-family: 'Vazirmatn', sans-serif;
             line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            padding: 0;
+            margin: 0;
         }
 
         a {
             text-decoration: none;
-            color: inherit;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        ul {
+            list-style: none;
         }
 
         img {
@@ -47,586 +60,798 @@
             height: auto;
         }
 
-        /* Blog Header */
-        .blog-header {
-            background-color: var(--card-bg);
-            padding: 1.5rem 0;
-            box-shadow: var(--shadow-sm);
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        .site-header {
+            background-color: var(--white-color);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
         }
 
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
+        .main-nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px 0;
         }
 
-        .blog-logo {
-            font-family: 'Fira Code', monospace;
+        .logo {
+            font-size: 1.5rem;
             font-weight: 700;
-            font-size: 1.8rem;
         }
 
-        .blog-logo a {
-            color: var(--text);
+        .logo a {
+            color: var(--dark-color);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
         }
 
-        .logo-icon {
-            background-color: var(--primary);
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 4px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
+        .logo-text {
+            margin-right: 10px;
+            position: relative;
+        }
+
+        .logo-text:after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 20px;
         }
 
-        .nav-link {
-            color: var(--text);
+        .nav-links a {
+            color: var(--dark-color);
             font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        .nav-link:hover {
-            color: var(--primary);
-        }
-
-        /* Hero Section */
-        .blog-hero {
-            background: linear-gradient(135deg, var(--primary), #8338ec);
-            color: white;
-            padding: 5rem 0;
-            text-align: center;
-        }
-
-        .hero-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-
-        .hero-title {
-            font-family: 'Fira Code', monospace;
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            margin-bottom: 2rem;
-        }
-
-        .search-container {
             position: relative;
-            max-width: 500px;
-            margin: 0 auto;
+            padding: 5px 0;
         }
 
-        .search-input {
-            width: 100%;
-            padding: 1rem 3rem 1rem 1.5rem;
-            border-radius: 4px;
-            border: none;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
-            font-size: 1rem;
-        }
-
-        .search-input::placeholder {
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .search-icon {
+        .nav-links a:after {
+            content: '';
             position: absolute;
-            right: 1.25rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: white;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
+            transition: var(--transition);
+            border-radius: 2px;
         }
 
-        /* Categories */
-        .categories-section {
-            background-color: var(--card-bg);
-            padding: 1rem 0;
-            position: sticky;
-            top: 76px;
-            z-index: 90;
-            box-shadow: var(--shadow-sm);
+        .nav-links a:hover:after {
+            width: 100%;
         }
 
-        .categories-container {
-            max-width: 1200px;
+        /* Blog Header */
+        .blog-header {
+            background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
+            color: var(--white-color);
+            padding: 80px 0;
+            text-align: center;
+            margin-bottom: 40px;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxkZWZzPgogICAgPHBhdHRlcm4gaWQ9InBhdHRlcm4iIHg9IjAiIHk9IjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0xMCAzMCBRMjAgMTUgMzAgMzAgUTQwIDQ1IDUwIDMwIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz4KPC9zdmc+') repeat;
+            opacity: 0.2;
+        }
+
+        .blog-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .blog-description {
+            font-size: 1.2rem;
+            max-width: 700px;
             margin: 0 auto;
-            padding: 0 1.5rem;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.75rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
         }
 
-        .category-btn {
-            background-color: var(--bg);
-            border: 1px solid var(--border);
-            color: var(--text);
-            padding: 0.5rem 1.25rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
+        /* Blog Content */
+        .blog-content {
+            padding: 40px 0;
         }
 
-        .category-btn.active {
-            background-color: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .category-btn:hover:not(.active) {
-            border-color: var(--primary);
-            color: var(--primary);
-        }
-
-        /* Main Content */
-        .main-content {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 1.5rem;
+        .blog-layout {
             display: grid;
-            grid-template-columns: 3fr 1fr;
-            gap: 2rem;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
         }
 
-        /* Posts Grid */
-        .posts-grid {
+        .posts-list {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 2rem;
+            gap: 30px;
         }
 
         .post-card {
-            background-color: var(--card-bg);
-            border-radius: 8px;
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
             overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            border: 1px solid var(--border);
-        }
-
-        .post-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .post-image {
-            height: 100%;
-            min-height: 220px;
-        }
-
-        .post-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .post-details {
-            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
             display: flex;
             flex-direction: column;
         }
 
-        .post-category {
-            display: inline-block;
-            background-color: var(--primary-light);
-            color: var(--primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            align-self: flex-start;
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .post-thumbnail {
+            height: 200px;
+            background-color: var(--primary-color);
+            background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .post-thumbnail::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KPHBhdGggZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIiBkPSJNMCwxMDAgQzUwLDEzMCAxNTAsMTMwIDIwMCwxMDAgQzE1MCw3MCA1MCw3MCAwLDEwMCBaIi8+CjxwYXRoIGZpbGw9InJnYmEoMjU1LDI1NSwwLDAuMDUpIiBkPSJNMCwxMDAgQzUwLDcwIDE1MCw3MCAyMDAsMTAwIEMxNTAsMTMwIDUwLDEzMCAwLDEwMCBaIi8+Cjwvc3ZnPg==');
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .ai-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .post-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         .post-title {
             font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            line-height: 1.3;
+            margin-bottom: 10px;
+            color: var(--dark-color);
+            transition: var(--transition);
         }
 
-        .post-title a {
-            color: var(--text);
-            transition: color 0.2s;
-        }
-
-        .post-title a:hover {
-            color: var(--primary);
-        }
-
-        .post-excerpt {
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-            font-size: 0.95rem;
-            line-height: 1.6;
+        .post-card:hover .post-title {
+            color: var(--primary-color);
         }
 
         .post-meta {
-            margin-top: auto;
             display: flex;
-            justify-content: space-between;
+            font-size: 0.9rem;
+            color: var(--gray-color);
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .post-date, .post-categories, .post-tags {
+            display: flex;
             align-items: center;
-            color: var(--text-light);
-            font-size: 0.85rem;
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
+        }
+
+        .post-date i, .post-categories i, .post-tags i {
+            margin-left: 5px;
+        }
+
+        .category, .tag {
+            background-color: var(--gray-light);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            margin-left: 5px;
+            color: var(--dark-color);
+            transition: var(--transition);
+        }
+
+        .category:hover, .tag:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        .post-excerpt {
+            margin-bottom: 20px;
+            color: var(--gray-color);
+            flex-grow: 1;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 500;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .read-more i {
+            margin-right: 5px;
+            transition: var(--transition);
+        }
+
+        .post-card:hover .read-more {
+            color: var(--primary-dark);
+        }
+
+        .post-card:hover .read-more i {
+            transform: translateX(-5px);
         }
 
         /* Sidebar */
-        .blog-sidebar {
+        .sidebar {
             position: sticky;
-            top: 140px;
-            align-self: start;
+            top: 100px;
         }
 
-        .sidebar-section {
-            background-color: var(--card-bg);
-            border-radius: 8px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: var(--shadow-sm);
-            border: 1px solid var(--border);
+        .widget {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: var(--box-shadow);
         }
 
-        .sidebar-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 1.25rem;
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid var(--border);
-            color: var(--text);
+        .widget-title {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--gray-light);
+            position: relative;
         }
 
-        .recent-posts {
-            list-style: none;
+        .widget-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
         }
 
-        .recent-posts li {
-            margin-bottom: 1rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid var(--border);
+        .recent-posts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        .recent-posts li:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
+        .recent-post {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
         }
 
-        .recent-post-link {
-            display: block;
-            color: var(--text);
+        .recent-post-thumbnail {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--border-radius);
+            background-color: var(--primary-color);
+            background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+            flex-shrink: 0;
+        }
+
+        .recent-post-info {
+            flex-grow: 1;
+        }
+
+        .recent-post-title {
+            font-size: 0.95rem;
             font-weight: 500;
-            margin-bottom: 0.25rem;
-            transition: color 0.2s;
+            margin-bottom: 5px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            color: var(--dark-color);
+            transition: var(--transition);
         }
 
-        .recent-post-link:hover {
-            color: var(--primary);
+        .recent-post-title:hover {
+            color: var(--primary-color);
         }
 
         .recent-post-date {
             font-size: 0.8rem;
-            color: var(--text-light);
+            color: var(--gray-color);
         }
 
-        .tag-cloud {
+        .categories-list {
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        .tag {
-            display: inline-block;
-            background-color: var(--primary-light);
-            color: var(--primary);
-            padding: 0.25rem 0.75rem;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            transition: all 0.2s;
-        }
-
-        .tag:hover {
-            background-color: var(--primary);
-            color: white;
-        }
-
-        /* Footer */
-        .blog-footer {
-            background-color: var(--card-bg);
-            padding: 2rem 0;
-            border-top: 1px solid var(--border);
-            margin-top: 3rem;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
+        .category-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 8px 0;
+            border-bottom: 1px solid var(--gray-light);
+            transition: var(--transition);
         }
 
-        .footer-logo {
-            font-family: 'Fira Code', monospace;
-            font-weight: 600;
-            font-size: 1.25rem;
-            color: var(--text);
+        .category-item:last-child {
+            border-bottom: none;
         }
 
-        .footer-copyright {
-            color: var(--text-light);
+        .category-item:hover {
+            transform: translateX(-5px);
+        }
+
+        .category-name {
+            display: flex;
+            align-items: center;
+            font-weight: 500;
+            color: var(--dark-color);
+            transition: var(--transition);
+        }
+
+        .category-name i {
+            margin-left: 8px;
+            color: var(--primary-color);
+        }
+
+        .category-item:hover .category-name {
+            color: var(--primary-color);
+        }
+
+        .category-count {
+            background-color: var(--gray-light);
+            color: var(--dark-color);
+            font-size: 0.8rem;
+            padding: 2px 8px;
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .category-item:hover .category-count {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag-item {
+            background-color: var(--gray-light);
+            color: var(--dark-color);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .tag-item:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: var(--white-color);
+            padding: 20px 0;
+            text-align: center;
+            border-top: 1px solid var(--gray-light);
+            margin-top: 40px;
+        }
+
+        .copyright {
+            color: var(--gray-color);
             font-size: 0.9rem;
         }
 
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .main-content {
-                grid-template-columns: 1fr;
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
             }
-
-            .blog-sidebar {
-                position: static;
-                margin-top: 2rem;
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
-
-            .post-card {
+            .blog-layout {
                 grid-template-columns: 1fr;
             }
-
-            .post-image {
-                height: 200px;
+            
+            .sidebar {
+                position: static;
+            }
+            
+            .blog-title {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                gap: 15px;
             }
         }
 
         @media (max-width: 576px) {
-            .hero-title {
+            .blog-title {
                 font-size: 2rem;
             }
             
-            .blog-hero {
-                padding: 3rem 1rem;
+            .blog-header {
+                padding: 60px 0;
             }
             
-            .header-container {
+            .main-nav {
                 flex-direction: column;
-                gap: 1rem;
+                gap: 15px;
             }
-            
-            .nav-links {
-                gap: 1rem;
+        }
+
+        /* AI Theme Elements */
+        .circuit-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAiIGhlaWdodD0iMTAwIj4KPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9InJnYmEoMCwwLDAsMCkiLz4KPHBhdGggZD0iTTAgNTAgTDUwIDAgTDEwMCA1MCBMNTAgMTAwIFoiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIi8+CjxjaXJjbGUgY3g9IjUwIiBjeT0iNTAiIHI9IjMwIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiIGZpbGw9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIvPgo8Y2lyY2xlIGN4PSI1MCIgY3k9IjUwIiByPSI1IiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIxIi8+Cjwvc3ZnPg==');
+            background-repeat: repeat;
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .ai-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.3) 0%, rgba(108, 92, 231, 0.1) 50%, rgba(0, 0, 0, 0) 70%);
+            filter: blur(30px);
+            animation: pulse 6s infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.3;
             }
+            100% {
+                transform: scale(1.2);
+                opacity: 0.1;
+            }
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .page-item {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--white-color);
+            color: var(--dark-color);
+            font-weight: 500;
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+
+        .page-item.active, .page-item:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        .page-arrow {
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: var(--white-color);
+            color: var(--dark-color);
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+        }
+
+        .page-arrow:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+            transform: translateX(-5px);
+        }
+
+        .page-arrow.next:hover {
+            transform: translateX(5px);
         }
     </style>
 </head>
 <body>
-    <header class="blog-header">
-        <div class="header-container">
-            <div class="blog-logo">
-                <a href="/">
-                    <div class="logo-icon">T</div>
-                    <span>TAwR00T</span>
-                </a>
-            </div>
-            <nav class="nav-links">
-                <a href="/" class="nav-link">Home</a>
-                <a href="/blog.html" class="nav-link">Blog</a>
-                <a href="/about" class="nav-link">About</a>
-                <a href="/contact" class="nav-link">Contact</a>
+    <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <div class="logo">
+                    <a href="index.html">
+                        <span class="logo-text">هوش مصنوعی نوین</span>
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">صفحه اصلی</a></li>
+                    <li><a href="blog.html">بلاگ</a></li>
+                </ul>
             </nav>
         </div>
     </header>
 
-    <section class="blog-hero">
-        <div class="hero-container">
-            <h1 class="hero-title">TAwR00T Blog</h1>
-            <p class="hero-subtitle">Exploring AI, Technology & Programming</p>
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Search articles...">
-                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </div>
+    <section class="blog-header">
+        <div class="ai-glow" style="top: 20%; left: 20%;"></div>
+        <div class="ai-glow" style="bottom: 10%; right: 10%;"></div>
+        <div class="circuit-pattern"></div>
+        <div class="container">
+            <h1 class="blog-title">آخرین مقالات هوش مصنوعی</h1>
+            <p class="blog-description">آخرین دستاوردها، اخبار و تحلیل‌های دنیای هوش مصنوعی، یادگیری ماشین و شبکه‌های عصبی عمیق</p>
         </div>
     </section>
 
-    <section class="categories-section">
-        <div class="categories-container">
-            <button class="category-btn active" data-category="all">All Posts</button>
-            {% assign categories = site.posts | map: "categories" | uniq | compact | sort %}
-            {% for category in categories %}
-                <button class="category-btn" data-category="{{ category | slugify }}">{{ category }}</button>
-            {% endfor %}
-        </div>
-    </section>
-
-    <main class="main-content">
-        <div class="posts-grid">
-            {% for post in site.posts %}
-            <article class="post-card" data-categories="{{ post.categories | map: 'slugify' | join: ' ' }}">
-                <div class="post-image">
-                    {% if post.image %}
-                    <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
-                    {% else %}
-                    <img src="{{ '/assets/images/default-post.jpg' | relative_url }}" alt="{{ post.title }}">
-                    {% endif %}
-                </div>
-                <div class="post-details">
-                    {% if post.categories.size > 0 %}
-                    <span class="post-category">{{ post.categories | first }}</span>
-                    {% endif %}
-                    <h2 class="post-title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-                    <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
-                    <div class="post-meta">
-                        <span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span>
-                        {% if post.author %}
-                        <span class="post-author">by {{ post.author }}</span>
-                        {% endif %}
+    <div class="blog-content">
+        <div class="container">
+            <div class="blog-layout">
+                <div class="posts-list">
+                    {% for post in site.posts %}
+                    <article class="post-card" style="animation: fadeIn 0.5s ease {{ forloop.index | times: 0.1 }}s both;">
+                        <div class="post-thumbnail">
+                            <div class="ai-icon">
+                                {% assign icon_types = "fa-brain,fa-microchip,fa-robot,fa-network-wired,fa-code,fa-server" | split: "," %}
+                                {% assign random_icon = icon_types[forloop.index0 | modulo: icon_types.size] %}
+                                <i class="fas {{ random_icon }}"></i>
+                            </div>
+                        </div>
+                        <div class="post-content">
+                            <h2 class="post-title">
+                                <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                            </h2>
+                            <div class="post-meta">
+                                <span class="post-date">
+                                    <i class="fas fa-calendar-alt"></i> {{ post.date | date: "%Y/%m/%d" }}
+                                </span>
+                                
+                                {% if post.categories %}
+                                <span class="post-categories">
+                                    <i class="fas fa-folder"></i>
+                                    {% for category in post.categories %}
+                                    <span class="category">{{ category }}</span>
+                                    {% endfor %}
+                                </span>
+                                {% endif %}
+                                
+                                {% if post.tags %}
+                                <span class="post-tags">
+                                    <i class="fas fa-tags"></i>
+                                    {% for tag in post.tags %}
+                                    <span class="tag">{{ tag }}</span>
+                                    {% endfor %}
+                                </span>
+                                {% endif %}
+                            </div>
+                            
+                            <div class="post-excerpt">
+                                {% if post.excerpt %}
+                                {{ post.excerpt | strip_html | truncatewords: 30 }}
+                                {% else %}
+                                {{ post.content | strip_html | truncatewords: 30 }}
+                                {% endif %}
+                            </div>
+                            
+                            <a href="{{ post.url | relative_url }}" class="read-more">
+                                ادامه مطلب <i class="fas fa-arrow-left"></i>
+                            </a>
+                        </div>
+                    </article>
+                    {% endfor %}
+                    
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <a href="#" class="page-arrow prev">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                        <a href="#" class="page-item active">1</a>
+                        <a href="#" class="page-item">2</a>
+                        <a href="#" class="page-item">3</a>
+                        <a href="#" class="page-arrow next">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
                     </div>
                 </div>
-            </article>
-            {% endfor %}
+                
+                <aside class="sidebar">
+                    <!-- Recent Posts Widget -->
+                    <div class="widget">
+                        <h3 class="widget-title">آخرین مطالب</h3>
+                        <div class="recent-posts-list">
+                            {% for post in site.posts limit:5 %}
+                            <a href="{{ post.url | relative_url }}" class="recent-post">
+                                <div class="recent-post-thumbnail">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="recent-post-info">
+                                    <h4 class="recent-post-title">{{ post.title }}</h4>
+                                    <span class="recent-post-date">{{ post.date | date: "%Y/%m/%d" }}</span>
+                                </div>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <!-- Categories Widget -->
+                    <div class="widget">
+                        <h3 class="widget-title">دسته‌بندی‌ها</h3>
+                        <ul class="categories-list">
+                            {% assign categories_list = site.categories %}
+                            {% if categories_list.first[0] == null %}
+                              {% for category in categories_list %}
+                                <li class="category-item">
+                                    <a href="{{ site.baseurl }}/category/{{ category | downcase | url_escape }}/" class="category-name">
+                                        <i class="fas fa-folder"></i>
+                                        {{ category }}
+                                    </a>
+                                    <span class="category-count">{{ site.tags[category] | size }}</span>
+                                </li>
+                              {% endfor %}
+                            {% else %}
+                              {% for category in categories_list %}
+                                <li class="category-item">
+                                    <a href="{{ site.baseurl }}/category/{{ category[0] | downcase | url_escape }}/" class="category-name">
+                                        <i class="fas fa-folder"></i>
+                                        {{ category[0] }}
+                                    </a>
+                                    <span class="category-count">{{ category[1].size }}</span>
+                                </li>
+                              {% endfor %}
+                            {% endif %}
+                            {% assign categories_list = nil %}
+
+                            <!-- Fallback Categories if no categories defined -->
+                            {% if site.categories.size == 0 %}
+                            <li class="category-item">
+                                <a href="#" class="category-name">
+                                    <i class="fas fa-folder"></i>
+                                    هوش مصنوعی
+                                </a>
+                                <span class="category-count">4</span>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-name">
+                                    <i class="fas fa-folder"></i>
+                                    یادگیری ماشین
+                                </a>
+                                <span class="category-count">3</span>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-name">
+                                    <i class="fas fa-folder"></i>
+                                    شبکه‌های عصبی
+                                </a>
+                                <span class="category-count">2</span>
+                            </li>
+                            <li class="category-item">
+                                <a href="#" class="category-name">
+                                    <i class="fas fa-folder"></i>
+                                    کوانتوم
+                                </a>
+                                <span class="category-count">1</span>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    
+                    <!-- Tags Widget -->
+                    <div class="widget">
+                        <h3 class="widget-title">برچسب‌ها</h3>
+                        <div class="tags-cloud">
+                            {% assign tags_list = site.tags %}
+                            {% if tags_list.first[0] == null %}
+                              {% for tag in tags_list %}
+                                <a href="{{ site.baseurl }}/tag/{{ tag | downcase | url_escape }}/" class="tag-item">{{ tag }}</a>
+                              {% endfor %}
+                            {% else %}
+                              {% for tag in tags_list %}
+                                <a href="{{ site.baseurl }}/tag/{{ tag[0] | downcase | url_escape }}/" class="tag-item">{{ tag[0] }}</a>
+                              {% endfor %}
+                            {% endif %}
+                            {% assign tags_list = nil %}
+
+                            <!-- Fallback Tags if no tags defined -->
+                            {% if site.tags.size == 0 %}
+                            <a href="#" class="tag-item">هوش مصنوعی</a>
+                            <a href="#" class="tag-item">یادگیری ماشین</a>
+                            <a href="#" class="tag-item">شبکه عصبی</a>
+                            <a href="#" class="tag-item">پردازش زبان طبیعی</a>
+                            <a href="#" class="tag-item">بینایی ماشین</a>
+                            <a href="#" class="tag-item">یادگیری عمیق</a>
+                            <a href="#" class="tag-item">داده‌کاوی</a>
+                            <a href="#" class="tag-item">رباتیک</a>
+                            <a href="#" class="tag-item">کوانتوم</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </aside>
+            </div>
         </div>
+    </div>
 
-        <aside class="blog-sidebar">
-            <div class="sidebar-section">
-                <h3 class="sidebar-title">Recent Posts</h3>
-                <ul class="recent-posts">
-                    {% for post in site.posts limit:5 %}
-                    <li>
-                        <a href="{{ post.url | relative_url }}" class="recent-post-link">{{ post.title }}</a>
-                        <span class="recent-post-date">{{ post.date | date: "%b %d, %Y" }}</span>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
-
-            <div class="sidebar-section">
-                <h3 class="sidebar-title">Categories</h3>
-                <div class="tag-cloud">
-                    {% for category in categories %}
-                    <a href="#" class="tag" data-category="{{ category | slugify }}">{{ category }}</a>
-                    {% endfor %}
-                </div>
-            </div>
-        </aside>
-    </main>
-
-    <footer class="blog-footer">
-        <div class="footer-container">
-            <div class="footer-logo">TAwR00T</div>
-            <div class="footer-copyright">© {{ site.time | date: '%Y' }} All Rights Reserved</div>
+    <footer class="site-footer">
+        <div class="container">
+            <p class="copyright">© تمامی حقوق برای هوش مصنوعی نوین محفوظ است - {{ site.time | date: '%Y' }}</p>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const categoryButtons = document.querySelectorAll('.category-btn');
-            const categoryTags = document.querySelectorAll('.tag');
+            // Add animation to elements
             const postCards = document.querySelectorAll('.post-card');
-            const searchInput = document.querySelector('.search-input');
-
-            // Filter posts by category
-            function filterPosts(category) {
-                postCards.forEach(card => {
-                    if (category === 'all' || card.dataset.categories.includes(category)) {
-                        card.style.display = 'grid';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            }
-
-            // Set active category button
-            function setActiveButton(activeButton) {
-                categoryButtons.forEach(button => {
-                    button.classList.remove('active');
-                });
-                activeButton.classList.add('active');
-            }
-
-            // Add event listeners to category buttons
-            categoryButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const category = this.dataset.category;
-                    filterPosts(category);
-                    setActiveButton(this);
-                });
+            postCards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
             });
-
-            // Add event listeners to category tags
-            categoryTags.forEach(tag => {
-                tag.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const category = this.dataset.category;
-                    filterPosts(category);
-                    
-                    // Find and activate the corresponding button
-                    categoryButtons.forEach(button => {
-                        if (button.dataset.category === category) {
-                            setActiveButton(button);
-                        }
-                    });
-                });
-            });
-
-            // Search functionality
-            searchInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                
-                if (searchTerm.length > 2) {
-                    postCards.forEach(card => {
-                        const title = card.querySelector('.post-title').textContent.toLowerCase();
-                        const excerpt = card.querySelector('.post-excerpt').textContent.toLowerCase();
-                        
-                        if (title.includes(searchTerm) || excerpt.includes(searchTerm)) {
-                            card.style.display = 'grid';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                } else if (searchTerm.length === 0) {
-                    // Reset to current category filter
-                    const activeCategory = document.querySelector('.category-btn.active').dataset.category;
-                    filterPosts(activeCategory);
-                }
-            });
+            
+            // Search functionality could be added here
+            
+            // Category filtering could be added here
+            
+            // Pagination functionality could be added here
         });
     </script>
 </body>
