@@ -1,259 +1,1143 @@
 ---
-layout: default
+layout: null
 ---
 
-<div class="post-container">
-    <div class="post-header">
-        <div class="post-meta">
-            <div class="meta-left">
-                <span class="post-category">
-                    <span class="category-icon">
-                        {% if page.category == "QUANTUM" %}⚛️
-                        {% elsif page.category == "NEURAL" %}🧠
-                        {% elsif page.category == "AI" %}🤖
-                        {% elsif page.category == "SECURITY" %}🔒
-                        {% elsif page.category == "CLASSIFIED" %}🔬
-                        {% else %}📡
-                        {% endif %}
-                    </span>
-                    {{ page.category | default: "QUANTUM" }}
-                </span>
-                <span class="post-date">{{ page.date | date: "%Y-%m-%d %H:%M" }}</span>
-            </div>
-            <div class="meta-right">
-                <span class="post-status">
-                    {% if page.classified %}
-                    <span class="status-icon">🔒</span>
-                    CLASSIFIED
-                    {% else %}
-                    <span class="status-icon">✓</span>
-                    PUBLIC
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }} | هوش مصنوعی نوین</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --primary-dark: #2980b9;
+            --secondary-color: #6c5ce7;
+            --accent-color: #00cec9;
+            --dark-color: #2d3436;
+            --light-color: #f5f6fa;
+            --gray-color: #636e72;
+            --gray-light: #dfe6e9;
+            --white-color: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: var(--light-color);
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        a:hover {
+            color: var(--primary-dark);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: var(--border-radius);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header */
+        .site-header {
+            background-color: var(--white-color);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo a {
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            margin-right: 10px;
+            position: relative;
+        }
+
+        .logo-text:after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            right: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--dark-color);
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        /* Post Header */
+        .post-header {
+            background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
+            color: var(--white-color);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .post-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgogIDxkZWZzPgogICAgPHBhdHRlcm4gaWQ9InBhdHRlcm4iIHg9IjAiIHk9IjAiIHdpZHRoPSI2MCIgaGVpZ2h0PSI2MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+CiAgICAgIDxwYXRoIGQ9Ik0xMCAzMCBRMjAgMTUgMzAgMzAgUTQwIDQ1IDUwIDMwIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIyIi8+CiAgICA8L3BhdHRlcm4+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjcGF0dGVybikiLz4KPC9zdmc+') repeat;
+            opacity: 0.2;
+        }
+
+        .ai-glow {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(52, 152, 219, 0.3) 0%, rgba(108, 92, 231, 0.1) 50%, rgba(0, 0, 0, 0) 70%);
+            filter: blur(30px);
+            animation: pulse 6s infinite alternate;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(1.2);
+                opacity: 0.1;
+            }
+        }
+
+        .post-header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .post-title {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .post-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .post-meta-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .post-meta-item i {
+            margin-left: 8px;
+        }
+
+        .post-category, .post-tag {
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-left: 5px;
+            transition: var(--transition);
+        }
+
+        .post-category:hover, .post-tag:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .breadcrumbs {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .breadcrumbs a {
+            color: var(--white-color);
+        }
+
+        .breadcrumbs i {
+            margin: 0 8px;
+            font-size: 0.8rem;
+        }
+
+        /* Post Content */
+        .post-content-wrapper {
+            padding: 60px 0;
+        }
+
+        .post-layout {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+        }
+
+        .post-main {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            overflow: hidden;
+        }
+
+        .post-featured-image {
+            width: 100%;
+            height: 400px;
+            background-color: var(--primary-color);
+            background-image: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .post-featured-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMDAgMjAwIj4KPHBhdGggZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIiBkPSJNMCwxMDAgQzUwLDEzMCAxNTAsMTMwIDIwMCwxMDAgQzE1MCw3MCA1MCw3MCAwLDEwMCBaIi8+CjxwYXRoIGZpbGw9InJnYmEoMjU1LDI1NSwwLDAuMDUpIiBkPSJNMCwxMDAgQzUwLDcwIDE1MCw3MCAyMDAsMTAwIEMxNTAsMTMwIDUwLDEzMCAwLDEwMCBaIi8+Cjwvc3ZnPg==');
+            background-size: cover;
+            opacity: 0.3;
+        }
+
+        .ai-icon-large {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 6rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .post-content-container {
+            padding: 40px;
+        }
+
+        /* Article Content Styling */
+        .article-content {
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content h2 {
+            font-size: 1.8rem;
+            margin: 2.5rem 0 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .article-content h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+
+        .article-content h3 {
+            font-size: 1.4rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary-dark);
+        }
+
+        .article-content ul, .article-content ol {
+            margin: 0 1.5rem 1.5rem;
+            padding-right: 1rem;
+        }
+
+        .article-content ul {
+            list-style: disc;
+        }
+
+        .article-content ol {
+            list-style: decimal;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .article-content blockquote {
+            border-right: 4px solid var(--primary-color);
+            padding: 1rem 1.5rem;
+            margin: 1.5rem 0;
+            background-color: var(--light-color);
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+        .article-content blockquote p:last-child {
+            margin-bottom: 0;
+        }
+
+        .article-content img {
+            margin: 1.5rem 0;
+            box-shadow: var(--box-shadow);
+        }
+
+        .article-content a {
+            border-bottom: 1px dashed var(--primary-color);
+            padding-bottom: 2px;
+        }
+
+        .article-content a:hover {
+            border-bottom-style: solid;
+        }
+
+        /* Code Blocks */
+        .article-content pre {
+            background-color: #282c34;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .article-content code {
+            font-family: 'Fira Code', monospace;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .article-content p code {
+            background-color: var(--gray-light);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--primary-dark);
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #21252b;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            font-size: 0.85rem;
+            color: #abb2bf;
+            margin-top: 1.5rem;
+            margin-bottom: -1.5rem;
+        }
+
+        .code-language {
+            font-weight: 500;
+        }
+
+        .copy-button {
+            background: none;
+            border: none;
+            color: #abb2bf;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .copy-button:hover {
+            color: var(--white-color);
+        }
+
+        /* Post Footer */
+        .post-footer {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .post-tags-section {
+            margin-bottom: 30px;
+        }
+
+        .post-tags-title {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .post-tags-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .post-tag-item {
+            background-color: var(--light-color);
+            color: var(--primary-color);
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .post-tag-item:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        .post-share {
+            margin-bottom: 30px;
+        }
+
+        .post-share-title {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .share-button {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white-color);
+            transition: var(--transition);
+        }
+
+        .share-button:hover {
+            transform: translateY(-3px);
+        }
+
+        .share-twitter {
+            background-color: #1da1f2;
+        }
+
+        .share-facebook {
+            background-color: #1877f2;
+        }
+
+        .share-linkedin {
+            background-color: #0077b5;
+        }
+
+        .share-telegram {
+            background-color: #0088cc;
+        }
+
+        /* Author Box */
+        .author-box {
+            display: flex;
+            gap: 20px;
+            background-color: var(--light-color);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            margin-top: 40px;
+        }
+
+        .author-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .author-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info {
+            flex-grow: 1;
+        }
+
+        .author-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .author-bio {
+            color: var(--gray-color);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .author-social {
+            display: flex;
+            gap: 15px;
+        }
+
+        .author-social a {
+            color: var(--gray-color);
+            transition: var(--transition);
+        }
+
+        .author-social a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Related Posts */
+        .related-posts {
+            margin-top: 50px;
+        }
+
+        .related-posts-title {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .related-posts-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+
+        .related-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .related-post-card {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .related-post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .related-post-image {
+            height: 150px;
+            background-color: var(--primary-color);
+            position: relative;
+        }
+
+        .related-post-image i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .related-post-content {
+            padding: 15px;
+        }
+
+        .related-post-title {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .related-post-date {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 100px;
+        }
+
+        .widget {
+            background-color: var(--white-color);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .widget-title {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .widget-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(to left, var(--primary-color), var(--secondary-color));
+            border-radius: 3px;
+        }
+
+        .recent-posts-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .recent-post {
+            display: flex;
+            gap: 12px;
+        }
+
+        .recent-post-thumbnail {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-light);
+            border-radius: var(--border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .recent-post-thumbnail i {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .recent-post-info {
+            flex-grow: 1;
+        }
+
+        .recent-post-title {
+            font-size: 0.95rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+            line-height: 1.4;
+        }
+
+        .recent-post-date {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+        }
+
+        .categories-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .category-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .category-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .category-count {
+            background-color: var(--light-color);
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            color: var(--gray-color);
+        }
+
+        .tags-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tag-item {
+            background-color: var(--light-color);
+            color: var(--gray-color);
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .tag-item:hover {
+            background-color: var(--primary-color);
+            color: var(--white-color);
+        }
+
+        /* Footer */
+        .site-footer {
+            background-color: var(--white-color);
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .copyright {
+            color: var(--gray-color);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .post-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+                margin-top: 40px;
+            }
+
+            .related-posts-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .post-title {
+                font-size: 2rem;
+            }
+
+            .post-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .post-content-container {
+                padding: 25px;
+            }
+
+            .author-box {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .author-social {
+                justify-content: center;
+            }
+
+            .related-posts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .post-header {
+                padding: 40px 0;
+            }
+
+            .post-title {
+                font-size: 1.8rem;
+            }
+
+            .breadcrumbs {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <nav class="main-nav">
+                <div class="logo">
+                    <a href="/">
+                        <div class="logo-text">TAwR00T</div>
+                    </a>
+                </div>
+                <div class="nav-links">
+                    <a href="/">صفحه اصلی</a>
+                    <a href="/blog.html">بلاگ</a>
+                    <a href="/about">درباره ما</a>
+                    <a href="/contact">تماس با ما</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="post-header">
+        <div class="ai-glow" style="top: 20%; right: 10%;"></div>
+        <div class="ai-glow" style="bottom: 10%; left: 20%;"></div>
+        <div class="container">
+            <div class="post-header-content">
+                <div class="breadcrumbs">
+                    <a href="/">صفحه اصلی</a>
+                    <i class="fas fa-chevron-left"></i>
+                    <a href="/blog.html">بلاگ</a>
+                    <i class="fas fa-chevron-left"></i>
+                    <span>{{ page.title }}</span>
+                </div>
+                <h1 class="post-title">{{ page.title }}</h1>
+                <div class="post-meta">
+                    <div class="post-meta-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>{{ page.date | date: "%Y/%m/%d" }}</span>
+                    </div>
+                    
+                    {% if page.author %}
+                    <div class="post-meta-item">
+                        <i class="fas fa-user"></i>
+                        <span>{{ page.author }}</span>
+                    </div>
                     {% endif %}
-                </span>
-            </div>
-        </div>
-        
-        <h1 class="post-title">{{ page.title }}</h1>
-        
-        <div class="post-author">
-            <div class="author-avatar">
-                <div class="avatar-glow"></div>
-                <span class="avatar-text">{{ page.author | slice: 0, 2 | upcase }}</span>
-            </div>
-            <div class="author-info">
-                <div class="author-name">{{ page.author | default: site.author }}</div>
-                <div class="author-role">{{ page.author_role | default: "QUANTUM RESEARCHER" }}</div>
-            </div>
-        </div>
-        
-        {% if page.tags.size > 0 %}
-        <div class="post-tags">
-            {% for tag in page.tags %}
-            <span class="tag">#{{ tag }}</span>
-            {% endfor %}
-        </div>
-        {% endif %}
-    </div>
-    
-    <div class="post-content">
-        <div class="content-metrics">
-            <div class="metric">
-                <span class="metric-icon">⏱️</span>
-                <div class="metric-info">
-                    <span class="metric-value">{{ page.read_time | default: "5" }} MIN</span>
-                    <span class="metric-label">Read Time</span>
-                </div>
-            </div>
-            <div class="metric">
-                <span class="metric-icon">📊</span>
-                <div class="metric-info">
-                    <span class="metric-value">{{ page.complexity | default: "MEDIUM" }}</span>
-                    <span class="metric-label">Complexity</span>
-                </div>
-            </div>
-            {% if page.clearance %}
-            <div class="metric">
-                <span class="metric-icon">🔐</span>
-                <div class="metric-info">
-                    <span class="metric-value">{{ page.clearance }}</span>
-                    <span class="metric-label">Clearance</span>
-                </div>
-            </div>
-            {% endif %}
-        </div>
-        
-        <div class="content-body">
-            <div class="terminal-frame">
-                <div class="terminal-header">
-                    <div class="terminal-controls">
-                        <span class="control"></span>
-                        <span class="control"></span>
-                        <span class="control"></span>
+                    
+                    {% if page.categories %}
+                    <div class="post-meta-item">
+                        <i class="fas fa-folder"></i>
+                        {% for category in page.categories %}
+                        <a href="{{ site.baseurl }}/category/{{ category | downcase | url_escape }}/" class="post-category">{{ category }}</a>
+                        {% endfor %}
                     </div>
-                    <div class="terminal-title">QUANTUM-TERMINAL</div>
-                    <div class="terminal-options">
-                        <span class="option">⚙️</span>
+                    {% endif %}
+                    
+                    {% if page.tags %}
+                    <div class="post-meta-item">
+                        <i class="fas fa-tags"></i>
+                        {% for tag in page.tags %}
+                        <a href="{{ site.baseurl }}/tag/{{ tag | downcase | url_escape }}/" class="post-tag">{{ tag }}</a>
+                        {% endfor %}
                     </div>
-                </div>
-                <div class="terminal-body">
-                    {{ content }}
+                    {% endif %}
                 </div>
             </div>
-            
-            {% if page.data_visualization %}
-            <div class="data-visualization">
-                <div class="visualization-header">
-                    <h3>DATA VISUALIZATION</h3>
-                    <div class="visualization-controls">
-                        <button class="viz-control active">2D</button>
-                        <button class="viz-control">3D</button>
-                        <button class="viz-control">QUANTUM</button>
+        </div>
+    </section>
+
+    <div class="post-content-wrapper">
+        <div class="container">
+            <div class="post-layout">
+                <div class="post-main">
+                    {% if page.image %}
+                    <div class="post-featured-image">
+                        <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
                     </div>
-                </div>
-                <div class="visualization-container">
-                    <img src="{{ page.data_visualization }}" alt="Data Visualization">
-                    <div class="visualization-overlay"></div>
-                </div>
-            </div>
-            {% endif %}
-            
-            {% if page.equations %}
-            <div class="quantum-equations">
-                <h3>QUANTUM EQUATIONS</h3>
-                <div class="equations-container">
-                    {{ page.equations }}
-                </div>
-            </div>
-            {% endif %}
-        </div>
-    </div>
-    
-    <div class="post-footer">
-        <div class="post-metrics">
-            <div class="metric">
-                <span class="metric-icon">👁️</span>
-                <div class="metric-info">
-                    <span class="metric-value">{{ page.views | default: "1.2K" }}</span>
-                    <span class="metric-label">Views</span>
-                </div>
-            </div>
-            <div class="metric">
-                <span class="metric-icon">💬</span>
-                <div class="metric-info">
-                    <span class="metric-value">{{ page.comments | default: "42" }}</span>
-                    <span class="metric-label">Comments</span>
-                </div>
-            </div>
-            <div class="metric">
-                <span class="metric-icon">⚡</span>
-                <div class="metric-info">
-                    <span class="metric-value">{{ page.energy | default: "89%" }}</span>
-                    <span class="metric-label">Energy</span>
-                </div>
-            </div>
-        </div>
-        
-        <div class="post-actions">
-            <button class="quantum-btn">
-                <span class="btn-icon">💾</span>
-                SAVE TO NEURAL CACHE
-            </button>
-            <button class="quantum-btn">
-                <span class="btn-icon">🔄</span>
-                SYNC WITH QUANTUM NETWORK
-            </button>
-        </div>
-        
-        {% if page.related_posts.size > 0 %}
-        <div class="related-posts">
-            <h3>RELATED QUANTUM RESEARCH</h3>
-            <div class="related-grid">
-                {% for post in page.related_posts limit:3 %}
-                <a href="{{ post.url }}" class="related-post">
-                    <div class="related-title">{{ post.title }}</div>
-                    <div class="related-meta">
-                        <span class="related-category">{{ post.category }}</span>
-                        <span class="related-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                    {% else %}
+                    <div class="post-featured-image">
+                        <i class="fas fa-brain ai-icon-large"></i>
                     </div>
-                </a>
-                {% endfor %}
-            </div>
-        </div>
-        {% endif %}
-        
-        {% if page.comments != false %}
-        <div class="comments-section">
-            <h3>NEURAL FEEDBACK</h3>
-            <div class="comment-form">
-                <div class="input-field">
-                    <textarea required></textarea>
-                    <div class="field-glow"></div>
-                    <label>ENTER NEURAL FEEDBACK</label>
-                </div>
-                <button class="quantum-btn">
-                    <span class="btn-icon">📤</span>
-                    TRANSMIT
-                </button>
-            </div>
-            
-            <div class="comments-list">
-                {% for i in (1..3) %}
-                <div class="comment">
-                    <div class="comment-header">
-                        <div class="comment-author">
-                            <div class="author-avatar">
-                                <span class="avatar-text">U{{ i }}</span>
+                    {% endif %}
+                    
+                    <div class="post-content-container">
+                        <article class="article-content">
+                            {{ content }}
+                        </article>
+                        
+                        <div class="post-footer">
+                            {% if page.tags %}
+                            <div class="post-tags-section">
+                                <h3 class="post-tags-title">برچسب‌ها</h3>
+                                <div class="post-tags-list">
+                                    {% for tag in page.tags %}
+                                    <a href="{{ site.baseurl }}/tag/{{ tag | downcase | url_escape }}/" class="post-tag-item">{{ tag }}</a>
+                                    {% endfor %}
+                                </div>
                             </div>
-                            <div class="author-info">
-                                <div class="author-name">QUANTUM_USER_{{ i }}</div>
-                                <div class="author-role">NEURAL NETWORK {{ i }}</div>
+                            {% endif %}
+                            
+                            <div class="post-share">
+                                <h3 class="post-share-title">اشتراک‌گذاری</h3>
+                                <div class="share-buttons">
+                                    <a href="https://twitter.com/intent/tweet?url={{ site.url }}{{ page.url }}&text={{ page.title }}" target="_blank" class="share-button share-twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ site.url }}{{ page.url }}" target="_blank" class="share-button share-facebook">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ site.url }}{{ page.url }}&title={{ page.title }}" target="_blank" class="share-button share-linkedin">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="https://t.me/share/url?url={{ site.url }}{{ page.url }}&text={{ page.title }}" target="_blank" class="share-button share-telegram">
+                                        <i class="fab fa-telegram-plane"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <div class="author-box">
+                                <div class="author-avatar">
+                                    <img src="{{ site.baseurl }}/assets/images/author.jpg" alt="نویسنده" onerror="this.src='https://via.placeholder.com/100x100?text=AI'">
+                                </div>
+                                <div class="author-info">
+                                    <h3 class="author-name">{{ page.author | default: "هوش مصنوعی نوین" }}</h3>
+                                    <p class="author-bio">متخصص در زمینه هوش مصنوعی و یادگیری ماشین با بیش از ۵ سال تجربه در توسعه سیستم‌های هوشمند و پردازش زبان طبیعی.</p>
+                                    <div class="author-social">
+                                        <a href="#"><i class="fab fa-twitter"></i></a>
+                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                        <a href="#"><i class="fab fa-github"></i></a>
+                                        <a href="#"><i class="fas fa-globe"></i></a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="comment-date">2025-03-0{{ i }} 14:3{{ i }}:00</div>
-                    </div>
-                    <div class="comment-body">
-                        Sample neural feedback {{ i }}. This is where users can provide their thoughts on the quantum research presented in this article.
-                    </div>
-                    <div class="comment-actions">
-                        <button class="action-btn">
-                            <span class="btn-icon">⚡</span>
-                            AMPLIFY
-                        </button>
-                        <button class="action-btn">
-                            <span class="btn-icon">💬</span>
-                            RESPOND
-                        </button>
+                        
+                        <div class="related-posts">
+                            <h3 class="related-posts-title">مطالب مرتبط</h3>
+                            <div class="related-posts-grid">
+                                {% assign maxRelated = 3 %}
+                                {% assign minCommonTags = 1 %}
+                                {% assign maxRelatedCounter = 0 %}
+                                
+                                {% for post in site.posts %}
+                                    {% assign sameTagCount = 0 %}
+                                    {% for tag in post.tags %}
+                                        {% if post.url != page.url %}
+                                            {% if page.tags contains tag %}
+                                                {% assign sameTagCount = sameTagCount | plus: 1 %}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                    
+                                    {% if sameTagCount >= minCommonTags and maxRelatedCounter < maxRelated %}
+                                        <a href="{{ post.url | relative_url }}" class="related-post-card">
+                                            <div class="related-post-image">
+                                                {% if post.image %}
+                                                <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+                                                {% else %}
+                                                <i class="fas fa-brain"></i>
+                                                {% endif %}
+                                            </div>
+                                            <div class="related-post-content">
+                                                <h4 class="related-post-title">{{ post.title }}</h4>
+                                                <span class="related-post-date">{{ post.date | date: "%Y/%m/%d" }}</span>
+                                            </div>
+                                        </a>
+                                        {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+                                    {% endif %}
+                                {% endfor %}
+                                
+                                {% if maxRelatedCounter < maxRelated %}
+                                    {% for post in site.posts %}
+                                        {% if post.url != page.url %}
+                                            {% if maxRelatedCounter < maxRelated %}
+                                                <a href="{{ post.url | relative_url }}" class="related-post-card">
+                                                    <div class="related-post-image">
+                                                        {% if post.image %}
+                                                        <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
+                                                        {% else %}
+                                                        <i class="fas fa-brain"></i>
+                                                        {% endif %}
+                                                    </div>
+                                                    <div class="related-post-content">
+                                                        <h4 class="related-post-title">{{ post.title }}</h4>
+                                                        <span class="related-post-date">{{ post.date | date: "%Y/%m/%d" }}</span>
+                                                    </div>
+                                                </a>
+                                                {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
                 </div>
-                {% endfor %}
+                
+                <aside class="sidebar">
+                    <!-- Recent Posts Widget -->
+                    <div class="widget">
+                        <h3 class="widget-title">آخرین مطالب</h3>
+                        <div class="recent-posts-list">
+                            {% for post in site.posts limit:5 %}
+                            <a href="{{ post.url | relative_url }}" class="recent-post">
+                                <div class="recent-post-thumbnail">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                                <div class="recent-post-info">
+                                    <h4 class="recent-post-title">{{ post.title }}</h4>
+                                    <span class="recent-post-date">{{ post.date | date: "%Y/%m/%d" }}</span>
+                                </div>
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
+                    <!-- Categories Widget -->
+                    <div class="widget">
+                        <h3 class="widget-title">دسته‌بندی‌ها</h3>
+                        <ul class="categories-list">
+                            {% assign categories_list = site.categories %}
+                            {% if categories_list.first[0] == null %}
+                              {% for category in categories_list %}
+                                <li class="category-item">
+                                    <a href="{{ site.baseurl }}/category/{{ category | downcase | url_escape }}/" class="category-name">
+                                        <i class="fas fa-folder"></i>
+                                        {{ category }}
+                                    </a>
+                                    <span class="category-count">{{ site.tags[category] | size }}</span>
+                                </li>
+                              {% endfor %}
+                            {% else %}
+                              {% for category in categories_list %}
+                                <li class="category-item">
+                                    <a href="{{ site.baseurl }}/category/{{ category[0] | downcase | url_escape }}/" class="category-name">
+                                        <i class="fas fa-folder"></i>
+                                        {{ category[0] }}
+                                    </a>
+                                    <span class="category-count">{{ category[1].size }}</span>
+                                </li>
+                              {% endfor %}
+                            {% endif %}
+                            {% assign categories_list = nil %}
+                        </ul>
+                    </div>
+                    
+                    <!-- Tags Widget -->
+                    <div class="widget">
+                        <h3 class="widget-title">برچسب‌ها</h3>
+                        <div class="tags-cloud">
+                            {% assign tags_list = site.tags %}
+                            {% if tags_list.first[0] == null %}
+                              {% for tag in tags_list %}
+                                <a href="{{ site.baseurl }}/tag/{{ tag | downcase | url_escape }}/" class="tag-item">{{ tag }}</a>
+                              {% endfor %}
+                            {% else %}
+                              {% for tag in tags_list %}
+                                <a href="{{ site.baseurl }}/tag/{{ tag[0] | downcase | url_escape }}/" class="tag-item">{{ tag[0] }}</a>
+                              {% endfor %}
+                            {% endif %}
+                            {% assign tags_list = nil %}
+                        </div>
+                    </div>
+                </aside>
             </div>
         </div>
-        {% endif %}
     </div>
-</div>
 
-<div class="quantum-navigation">
-    <div class="nav-previous">
-        {% if page.previous %}
-        <a href="{{ page.previous.url }}" class="nav-link">
-            <span class="nav-arrow">←</span>
-            <div class="nav-info">
-                <div class="nav-label">PREVIOUS RESEARCH</div>
-                <div class="nav-title">{{ page.previous.title }}</div>
-            </div>
-        </a>
-        {% endif %}
-    </div>
-    
-    <div class="nav-next">
-        {% if page.next %}
-        <a href="{{ page.next.url }}" class="nav-link">
-            <div class="nav-info">
-                <div class="nav-label">NEXT RESEARCH</div>
-                <div class="nav-title">{{ page.next.title }}</div>
-            </div>
-            <span class="nav-arrow">→</span>
-        </a>
-        {% endif %}
-    </div>
-</div>
+    <footer class="site-footer">
+        <div class="container">
+            <p class="copyright">© تمامی حقوق برای هوش مصنوعی نوین محفوظ است - {{ site.time | date: '%Y' }}</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add syntax highlighting
+            if (typeof hljs !== 'undefined') {
+                document.querySelectorAll('pre code').forEach((block) => {
+                    hljs.highlightBlock(block);
+                });
+            }
+            
+            // Add copy code functionality
+            document.querySelectorAll('pre').forEach((block) => {
+                if (!block.querySelector('.code-header')) {
+                    const language = block.querySelector('code').className.replace('language-', '');
+                    const header = document.createElement('div');
+                    header.className = 'code-header';
+                    header.innerHTML = `
+                        <span class="code-language">${language || 'کد'}</span>
+                        <button class="copy-button">
+                            <i class="far fa-copy"></i>
+                            <span>کپی</span>
+                        </button>
+                    `;
+                    block.parentNode.insertBefore(header, block);
+                    
+                    const copyButton = header.querySelector('.copy-button');
+                    copyButton.addEventListener('click', () => {
+                        const code = block.textContent;
+                        navigator.clipboard.writeText(code).then(() => {
+                            copyButton.innerHTML = '<i class="fas fa-check"></i> <span>کپی شد</span>';
+                            setTimeout(() => {
+                                copyButton.innerHTML = '<i class="far fa-copy"></i> <span>کپی</span>';
+                            }, 2000);
+                        });
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
